@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 namespace TheCodingMonkey.Collections.BST
 {
-    /// <summary>Abstract base class for all BinarySearchTree enumerators.</summary>
+    /// <summary>Abstract base class for all BinarySearchTree enumerators. Implements an Enumerator for a Binary Search Tree
+    /// by traversing the entire tree at Construction and flattening it according to the rules of the enumerator.</summary>
     public abstract class FlatEnumerator<TKey, TValue> : IEnumerator<KeyValuePair<TKey, TValue>>
         where TKey : IComparable<TKey>
     {

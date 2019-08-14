@@ -131,6 +131,7 @@
     <Compile Include="BST\RedBlackTree.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BST\TraversalEnumerator.cs" />
     <Compile Include="CmdArguments.cs">
       <SubType>Code</SubType>
     </Compile>

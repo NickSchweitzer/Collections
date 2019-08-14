@@ -1,53 +1,56 @@
 using System;
+using System.Collections;
 
 namespace TheCodingMonkey.Collections.Lists
 {
     /// <summary>Base class for all LinkedList Enumerators.</summary>
-    public abstract class ListEnumerator : IBiDirEnumerator, IDisposable
+    public abstract class ListEnumerator<T> : IBiDirEnumerator<T>, IDisposable
     {
         /// <summary>Linked list being enumerated.</summary>
-        protected LinkedList m_LinkedList;
-        /// <summary>Current node being pointed to.</summary>
-        protected Node m_nodeCurrent;
+        protected LinkedList<T> linkedList;
+
         /// <summary>True if enumerator has been reset, and Move has not been called yet.</summary>
-        protected bool m_bReset;
+        protected bool isReset;
 
         /// <summary>Standard Constructor.</summary>
         /// <param name="list">List to Enumerate.</param>
-        public ListEnumerator( LinkedList list )
+        public ListEnumerator(LinkedList<T> list )
         {
-            m_LinkedList  = list;
+            linkedList = list;
             Reset();
         }
 
         /// <summary>Current Value of the Enumerator.</summary>
-        public Node CurrentNode
-        {
-            get { return m_nodeCurrent; }
-        }
+        public Node<T> CurrentNode { get; protected set; }
 
         /// <summary>Releases any Resources used by this object.</summary>
         public void Dispose()
         {
-            m_LinkedList = null;
+            linkedList = null;
         }
 
         /// <summary>Resets the Enumerator.</summary>
         public void Reset()
         {
-            m_nodeCurrent = null;
-            m_bReset      = true;
+            CurrentNode = null;
+            isReset = true;
         }
 
         /// <summary>Current Value of the Enumerator.</summary>
-        public object Current
+        public T Current
         {
-            get { return m_nodeCurrent.Value; }
+            get { return CurrentNode.Value; }
+        }
+
+        /// <summary>Current Value of the Enumerator.</summary>
+        object IEnumerator.Current
+        {
+            get { return CurrentNode.Value; }
         }
 
         /// <summary>Moves to the next item in the list.</summary>
         public abstract bool MoveNext();
         /// <summary>Moves to the previous element in the list</summary>
-        public abstract bool MovePrev();
+        public abstract bool MovePrevious();
     }
 }

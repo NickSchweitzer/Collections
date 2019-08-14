@@ -9,12 +9,12 @@ namespace TheCodingMonkey.Collections.Tests
     [TestClass, TestCategory("Linked List")]
     public class LinkedListTests
 	{
-        private LinkedList m_LinkedList;
+        private LinkedList<int> testList;
 
         [TestInitialize]
         public void Init()
         {
-            m_LinkedList = new LinkedList();
+            testList = new LinkedList<int>();
         }
 
         protected void AddToEmpty( int nCount )
@@ -24,23 +24,23 @@ namespace TheCodingMonkey.Collections.Tests
 
         protected void AddToEmpty( int nCount, bool bMultiply )
         {
-            Assert.IsTrue( m_LinkedList.Empty );
+            Assert.IsTrue( testList.Empty );
 
             for ( int i = 1; i <= nCount; i++ )
-                m_LinkedList.Add( bMultiply ? i*1000 : i );
+                testList.Add( bMultiply ? i*1000 : i );
 
-            Assert.AreEqual( nCount, m_LinkedList.Count );
+            Assert.AreEqual( nCount, testList.Count );
         }
 
-        protected LinkedList MakeClone()
+        protected LinkedList<int> MakeClone()
         {
-            LinkedList cloned = (LinkedList)m_LinkedList.Clone();
+            LinkedList<int> cloned = (LinkedList<int>)testList.Clone();
 
             // Make sure of the basics... that they aren't pointing to the same references
-            Assert.IsFalse( object.ReferenceEquals( m_LinkedList, cloned ) );
+            Assert.IsFalse( object.ReferenceEquals( testList, cloned ) );
 
             // Check that the sizes match... duh
-            Assert.AreEqual( m_LinkedList.Count, cloned.Count );
+            Assert.AreEqual( testList.Count, cloned.Count );
 
             return cloned;
         }
@@ -52,7 +52,7 @@ namespace TheCodingMonkey.Collections.Tests
 
             // Verify the Forward Iterator
             int iTest = 1;
-            foreach ( int iList in m_LinkedList )
+            foreach ( int iList in testList )
             {
                 Assert.AreEqual( iList, iTest );
                 iTest++;
@@ -60,7 +60,7 @@ namespace TheCodingMonkey.Collections.Tests
 
             // Verify the Reverse Iterator
             iTest = 10;
-            IEnumerator enumerator = new ReverseEnumerator( m_LinkedList );
+            IEnumerator enumerator = new ReverseEnumerator<int>( testList );
             while ( enumerator.MoveNext() )
             {
                 int iList = (int)enumerator.Current;
@@ -76,13 +76,13 @@ namespace TheCodingMonkey.Collections.Tests
 
             // Insert 10 items at the front of the list
             for ( int i = 20; i >= 11; i-- )
-                m_LinkedList.Insert( 0, i );
+                testList.Insert( 0, i );
 
-            Assert.AreEqual( 20, m_LinkedList.Count );
+            Assert.AreEqual( 20, testList.Count );
 
             // Verify the first 10 items are the inserted items
             int iTest = 11;
-            IEnumerator enumerator = m_LinkedList.GetEnumerator();
+            IEnumerator enumerator = testList.GetEnumerator();
             while ( iTest <= 20 )
             {
                 enumerator.MoveNext();
@@ -93,7 +93,7 @@ namespace TheCodingMonkey.Collections.Tests
 
             // Verify that the last 10 items are the ones that were added originally
             iTest = 10;
-            enumerator = new ReverseEnumerator( m_LinkedList );
+            enumerator = new ReverseEnumerator<int>( testList );
             while ( iTest >= 1 )
             {
                 enumerator.MoveNext();
@@ -110,30 +110,30 @@ namespace TheCodingMonkey.Collections.Tests
 
             // Remove all the even numbers
             for ( int i = 0; i <= 20; i += 2 )
-                m_LinkedList.Remove( i );
+                testList.Remove( i );
 
-            Assert.AreEqual( 10, m_LinkedList.Count );
+            Assert.AreEqual( 10, testList.Count );
 
             // Verify that the remaining items are even
             int iTest = 1;
-            foreach ( int iList in m_LinkedList )
+            foreach ( int iList in testList )
             {
                 Assert.AreEqual( iTest, iList );
                 iTest +=2;
             }
 
             // Verify that clear works
-            m_LinkedList.Clear();
+            testList.Clear();
 
             // Verify that Empty is now true
-            Assert.IsTrue( m_LinkedList.Empty );
+            Assert.IsTrue( testList.Empty );
 
             // Make sure the iterator thinks its empty
-            IEnumerator enumerator = m_LinkedList.GetEnumerator();
+            IEnumerator enumerator = testList.GetEnumerator();
             Assert.IsFalse( enumerator.MoveNext() );
 
             // Finally try to remove from an empty list
-            m_LinkedList.Remove( 1 );
+            testList.Remove( 1 );
         }
 
         [TestMethod]
@@ -143,13 +143,13 @@ namespace TheCodingMonkey.Collections.Tests
 
             // Remove all the even numbers
             for ( int i = 1; i <= 10; i++ )
-                m_LinkedList.RemoveAt( i );
+                testList.RemoveAt( i );
 
-            Assert.AreEqual( 10, m_LinkedList.Count );
+            Assert.AreEqual( 10, testList.Count );
 
             // Verify that the remaining items are odd
             int iTest = 1000;
-            foreach ( int iList in m_LinkedList )
+            foreach ( int iList in testList )
             {
                 Assert.AreEqual( iTest, iList );
                 iTest += 2000;
@@ -160,23 +160,23 @@ namespace TheCodingMonkey.Collections.Tests
         public void RemoveAtEmpty()
         {
             AddToEmpty( 20 );
-            m_LinkedList.Clear();
-            Assert.IsTrue( m_LinkedList.Empty );
-            m_LinkedList.RemoveAt( 1 );
+            testList.Clear();
+            Assert.IsTrue( testList.Empty );
+            testList.RemoveAt( 1 );
         }
 
         [TestMethod, ExpectedException( typeof( System.ArgumentOutOfRangeException) )]
         public void RemoveAtOutOfRange()
         {
             AddToEmpty( 10 );
-            m_LinkedList.RemoveAt( 11 );
+            testList.RemoveAt( 11 );
         }
 
         [TestMethod, ExpectedException( typeof( System.ArgumentOutOfRangeException) )]
         public void RemoveAtNegative()
         {
             AddToEmpty( 10 );
-            m_LinkedList.RemoveAt( -1 );
+            testList.RemoveAt( -1 );
         }
 
         [TestMethod]
@@ -185,11 +185,11 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 25 );
 
             for ( int i = 1; i <= 25; i++ )
-                Assert.IsTrue( m_LinkedList.Contains( i ) );
+                Assert.IsTrue( testList.Contains( i ) );
 
             Random rand = new Random();
             int nValue  = rand.Next( 26, int.MaxValue );
-            Assert.IsFalse( m_LinkedList.Contains( nValue ) );
+            Assert.IsFalse( testList.Contains( nValue ) );
         }
 
         [TestMethod]
@@ -198,11 +198,11 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 25, true );
 
             for ( int i = 0; i < 25; i++ )
-                Assert.AreEqual( i, m_LinkedList.IndexOf( (i+1)*1000 ) );
+                Assert.AreEqual( i, testList.IndexOf( (i+1)*1000 ) );
 
             Random rand = new Random();
             int nValue  = rand.Next( 26, int.MaxValue );
-            Assert.AreEqual( -1, m_LinkedList.IndexOf( nValue ) );
+            Assert.AreEqual( -1, testList.IndexOf( nValue ) );
         }
 
         [TestMethod, ExpectedException( typeof(System.ArgumentOutOfRangeException) )]
@@ -212,9 +212,9 @@ namespace TheCodingMonkey.Collections.Tests
 
             // Check to make sure the indexer works for all entries in the dictionary
             for ( int i = 0; i < 25; i++ )
-                Assert.AreEqual( (i+1)*1000, m_LinkedList[i] );
+                Assert.AreEqual( (i+1)*1000, testList[i] );
 
-            int nValue = (int)m_LinkedList[50];
+            int nValue = (int)testList[50];
         }
 
         [TestMethod, ExpectedException( typeof(System.ArgumentOutOfRangeException) )]
@@ -223,14 +223,14 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 25 );
 
             // Make sure that null throws the proper exception
-            int nValue = (int)m_LinkedList[-1];
+            int nValue = (int)testList[-1];
         }
 
         [TestMethod, ExpectedException( typeof(System.ArgumentOutOfRangeException) )]
         public void IndexerEmptyTest()
         {
             // Make sure that empty dictionary throws the proper exception
-            int nValue = (int)m_LinkedList[1];
+            int nValue = (int)testList[1];
         }
 
         [TestMethod]
@@ -239,12 +239,12 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 25 );
 
             // Copy all the elements to an array
-            int[] array = new int[m_LinkedList.Count];
-            m_LinkedList.CopyTo( array, 0 );
-            Assert.AreEqual( m_LinkedList.Count, array.Length );
+            int[] array = new int[testList.Count];
+            testList.CopyTo( array, 0 );
+            Assert.AreEqual( testList.Count, array.Length );
 
             int i = 0;
-            foreach( int n in m_LinkedList )
+            foreach( int n in testList )
             {
                 // Make sure tha that the array matches what I added
                 // And make sure that the array matches the enumerator
@@ -257,13 +257,13 @@ namespace TheCodingMonkey.Collections.Tests
         [TestMethod]
         public void CopyToOffset()
         {
-            Assert.IsTrue( m_LinkedList.Empty );
+            Assert.IsTrue( testList.Empty );
 
             // Fill up my dictionary with the upper half of what I want in the array
             for ( int i = 5; i < 10; i++ )
-                m_LinkedList.Add( i );
+                testList.Add( i );
 
-            Assert.AreEqual( 5, m_LinkedList.Count );
+            Assert.AreEqual( 5, testList.Count );
 
             int[] array = new int[10];
 
@@ -276,7 +276,7 @@ namespace TheCodingMonkey.Collections.Tests
                 array[i] = i*100;
 
             // Do the CopyTo the upper half of the array
-            m_LinkedList.CopyTo( array, 5 );
+            testList.CopyTo( array, 5 );
 
             // Verify that the elements were overwritten
             for ( int i = 0; i < 10; i++ )
@@ -291,7 +291,7 @@ namespace TheCodingMonkey.Collections.Tests
         {
             AddToEmpty( 10 );
 
-            m_LinkedList.CopyTo( null, 0 );
+            testList.CopyTo( null, 0 );
         }
 
         [TestMethod, ExpectedException( typeof(System.ArgumentException) )]
@@ -300,7 +300,7 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 25 );
 
             int[] array = new int[10];
-            m_LinkedList.CopyTo( array, 0 );
+            testList.CopyTo( array, 0 );
         }
 
         [TestMethod, ExpectedException( typeof(System.ArgumentOutOfRangeException) )]
@@ -308,8 +308,8 @@ namespace TheCodingMonkey.Collections.Tests
         {
             AddToEmpty( 10 );
 
-            int[] array = new int[m_LinkedList.Count];
-            m_LinkedList.CopyTo( array, -1 );
+            int[] array = new int[testList.Count];
+            testList.CopyTo( array, -1 );
         }
 
         [TestMethod, ExpectedException( typeof(System.ArgumentException) )]
@@ -317,8 +317,8 @@ namespace TheCodingMonkey.Collections.Tests
         {
             AddToEmpty( 10 );
 
-            int[] array = new int[m_LinkedList.Count];
-            m_LinkedList.CopyTo( array, 1 );
+            int[] array = new int[testList.Count];
+            testList.CopyTo( array, 1 );
         }
 
         [TestMethod, ExpectedException( typeof(System.ArgumentOutOfRangeException) )]
@@ -326,8 +326,8 @@ namespace TheCodingMonkey.Collections.Tests
         {
             AddToEmpty( 10 );
 
-            int[] array = new int[m_LinkedList.Count];
-            m_LinkedList.CopyTo( array, 11 );
+            int[] array = new int[testList.Count];
+            testList.CopyTo( array, 11 );
         }
 
         [TestMethod]
@@ -336,18 +336,18 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 10 );
 
             // Insert 10 items at the front of the list
-            IEnumerator head = m_LinkedList.GetEnumerator();
+            IEnumerator head = testList.GetEnumerator();
             for ( int i = 20; i >= 11; i-- )
             {
                 head.Reset();
                 head.MoveNext();
-                m_LinkedList.Insert( head, i );
+                testList.Insert( head, i );
             }
-            Assert.AreEqual( 20, m_LinkedList.Count );
+            Assert.AreEqual( 20, testList.Count );
 
             // Verify the first 10 items are the inserted items
             int iTest = 11;
-            IEnumerator enumerator = m_LinkedList.GetEnumerator();
+            IEnumerator enumerator = testList.GetEnumerator();
             while ( iTest <= 20 )
             {
                 enumerator.MoveNext();
@@ -358,7 +358,7 @@ namespace TheCodingMonkey.Collections.Tests
 
             // Verify that the last 10 items are the ones that were added originally
             iTest = 10;
-            enumerator = new ReverseEnumerator( m_LinkedList );
+            enumerator = new ReverseEnumerator<int>( testList );
             while ( iTest >= 1 )
             {
                 enumerator.MoveNext();
@@ -374,29 +374,29 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 20, true );
 
             // Remove the first 10 items from the list
-            IEnumerator enumerator = m_LinkedList.GetEnumerator();
+            IEnumerator enumerator = testList.GetEnumerator();
             for ( int i = 0; i < 10; i++ )
             {
                 enumerator.Reset();
                 enumerator.MoveNext();
-                m_LinkedList.RemoveAt( enumerator );
+                testList.RemoveAt( enumerator );
             }
 
-            Assert.AreEqual( 10, m_LinkedList.Count );
+            Assert.AreEqual( 10, testList.Count );
 
             // Verify that the only remaining items are the last 10
             int iTest = 11000;
-            foreach ( int iList in m_LinkedList )
+            foreach ( int iList in testList )
             {
                 Assert.AreEqual( iTest, iList );
                 iTest += 1000;
             }
 
             // Clear the list
-            m_LinkedList.Clear();
+            testList.Clear();
 
             // Finally try to remove from an empty list
-            m_LinkedList.RemoveAt( null );
+            testList.RemoveAt( null );
         }
 
         [TestMethod]
@@ -404,14 +404,14 @@ namespace TheCodingMonkey.Collections.Tests
         {
             AddToEmpty( 25, true );
 
-            LinkedList cloned = MakeClone();
+            LinkedList<int> cloned = MakeClone();
 
-            IEnumerator enumOrig  = m_LinkedList.GetEnumerator();
+            IEnumerator enumOrig  = testList.GetEnumerator();
             IEnumerator enumClone = cloned.GetEnumerator();
             while ( enumOrig.MoveNext() && enumClone.MoveNext() )
             {
-                // Values point to same objects and are equal
-                Assert.IsTrue( object.ReferenceEquals( enumOrig.Current, enumClone.Current ) );
+                // Values point to different objects (ValueTypes) and are equal
+                Assert.IsFalse( object.ReferenceEquals( enumOrig.Current, enumClone.Current ) );
                 Assert.AreEqual( enumOrig.Current, enumClone.Current );
             }
         }
@@ -419,16 +419,17 @@ namespace TheCodingMonkey.Collections.Tests
         [TestMethod]
         public void CloneObjectTest()
         {
-            Assert.AreEqual( 0, m_LinkedList.Count );
+            LinkedList<CloneableInt> referenceList = new LinkedList<CloneableInt>();
+            Assert.AreEqual( 0, referenceList.Count );
 
             for ( int i = 1; i <= 25; i++ )
-                m_LinkedList.Add( new CloneableInt( i * 1000 ) );
+                referenceList.Add( new CloneableInt( i * 1000 ) );
 
-            Assert.AreEqual( 25, m_LinkedList.Count );
+            Assert.AreEqual( 25, referenceList.Count );
 
-            LinkedList cloned = MakeClone();
+            LinkedList<int> cloned = MakeClone();
 
-            IEnumerator enumOrig  = m_LinkedList.GetEnumerator();
+            IEnumerator enumOrig  = referenceList.GetEnumerator();
             IEnumerator enumClone = cloned.GetEnumerator();
             while ( enumOrig.MoveNext() && enumClone.MoveNext() )
             {
@@ -441,7 +442,7 @@ namespace TheCodingMonkey.Collections.Tests
         [TestMethod]
         public void CloneEmptyTest()
         {
-            LinkedList cloned = MakeClone();
+            LinkedList<int> cloned = MakeClone();
         }
 	}
 }

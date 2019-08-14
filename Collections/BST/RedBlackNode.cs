@@ -384,7 +384,7 @@ namespace TheCodingMonkey.Collections.BST
         }
 
         /// <summary>Node Color Enumeration</summary>
-        public enum NodeColor
+        private enum NodeColor
         {
             /// <summary>Red</summary>
             Red   = 0,

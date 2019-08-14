@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 namespace TheCodingMonkey.Collections.BST
 {
-    /// <summary>InOrder Traversal Enumerator.  The BinarySearchTree is enumerated in the order of Left Node,
-    /// Current Value, Right Node.</summary>
+    /// <summary>In Order Flat Enumerator.  The Binary Search Tree is enumerated in the order of Left Node, Current Value, Right Node at time of Enumerator construction.</summary>
     public class LevelOrderFlatEnumerator<TKey, TValue> : FlatEnumerator<TKey, TValue>
         where TKey : IComparable<TKey>
     {

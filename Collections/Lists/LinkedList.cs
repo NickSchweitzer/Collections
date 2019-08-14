@@ -1,16 +1,17 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace TheCodingMonkey.Collections.Lists
 {
 	/// <summary>Implements a doubly linked list.</summary>
-	public class LinkedList : IEnumerable, ICollection, IList, ICloneable
+	public class LinkedList<T> : ICloneable, ICollection<T>, IList<T>, IEnumerable<T>
 	{
         /// <summary>Retrieves the first item in the list.</summary>
-        public Node Head { get; set; } = null;
+        public Node<T> Head { get; set; } = null;
 
         /// <summary>Retrieves the last item in the list.</summary>
-        public Node Tail { get; set; } = null;
+        public Node<T> Tail { get; set; } = null;
 
         /// <summary>Returns true if the list is empty.</summary>
         public bool Empty => Count == 0;
@@ -19,14 +20,14 @@ namespace TheCodingMonkey.Collections.Lists
         /// <returns>New instance of the list.</returns>
         public object Clone()
         {
-            LinkedList clone = new LinkedList();
+            LinkedList<T> clone = new LinkedList<T>();
             
-            Node current = Head;
+            Node<T> current = Head;
             while ( current != null )
             {
-                object cloneValue;
+                T cloneValue;
                 if ( current.Value is ICloneable )
-                    cloneValue = ((ICloneable)current.Value).Clone();
+                    cloneValue = (T)((ICloneable)current.Value).Clone();
                 else
                     cloneValue = current.Value;
 
@@ -39,9 +40,16 @@ namespace TheCodingMonkey.Collections.Lists
 
         /// <summary>Returns a foward enumerator for this list.</summary>
         /// <returns>IEnumerator for this list.</returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new ForwardEnumerator<T>(this);
+        }
+
+        /// <summary>Returns a foward enumerator for this list.</summary>
+        /// <returns>IEnumerator for this list.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return new ForwardEnumerator( this );
+            return new ForwardEnumerator<T>(this);
         }
 
         /// <summary>Returns the number of items in the list.</summary>
@@ -61,7 +69,7 @@ namespace TheCodingMonkey.Collections.Lists
         /// is greater than the size of array.</exception>
         /// <exception cref="ArgumentException">Thrown if the number of items in the list is greater than the
         /// available space in array.</exception>
-        public void CopyTo( Array array, int index )
+        public void CopyTo(T[] array, int index )
         {
             if ( array == null )
                 throw new ArgumentNullException( "array", "array cannot be null" );
@@ -72,7 +80,7 @@ namespace TheCodingMonkey.Collections.Lists
             if ( ( array.Length - index ) < Count )
                 throw new ArgumentException( "array is not large enough to store the list", "array" );
 
-            IEnumerator enumerator = GetEnumerator();
+            IEnumerator<T> enumerator = GetEnumerator();
             while ( enumerator.MoveNext() )
                 array.SetValue( enumerator.Current, index++ );
         }
@@ -86,7 +94,7 @@ namespace TheCodingMonkey.Collections.Lists
         /// <summary>Gets or sets the element at the specified index.</summary>
         /// <exception cref="ArgumentOutOfRangeException">Thrown if index is less than zero or greater than
         /// the size of the list.</exception>
-        public object this[int index]
+        public T this[int index]
         {
             get { return GetNodeAtIndex( index ).Value;  }
             set { GetNodeAtIndex( index ).Value = value; }
@@ -94,24 +102,23 @@ namespace TheCodingMonkey.Collections.Lists
 
         /// <summary>Adds a new value onto the end of the list.</summary>
         /// <param name="value">New value to add.</param>
-        /// <returns>The position of the new element.</returns>
-        public int Add( object value )
+        public void Add( T value )
         {
             if ( Head == null )
             {
                 // Empty List
-                Head = new Node( value );
+                Head = new Node<T>( value );
                 Tail = Head;
             }
             else
             {
-                Node nodeNew    = new Node( value );
+                Node<T> nodeNew = new Node<T>( value );
                 Tail.Next = nodeNew;
-                nodeNew.Prev    = Tail;
-                Tail      = nodeNew;
+                nodeNew.Previous = Tail;
+                Tail = nodeNew;
             }
             // Either way increment the count
-            return Count++;
+            Count++;
         }
 
         /// <summary>Adds a new value at the specified position.</summary>
@@ -119,16 +126,16 @@ namespace TheCodingMonkey.Collections.Lists
         /// <param name="value">New value to insert.</param>
         /// <exception cref="ArgumentOutOfRangeException">Thrown if index is less than zero or greater than
         /// the size of the list.</exception>
-        public void Insert( int index, object value )
+        public void Insert( int index, T value )
         {
             Insert( GetNodeAtIndex( index ), value );
         }
 
         /// <summary>Removes the first occurance of the given value from the list.</summary>
         /// <param name="value">Value to remove.</param>
-        public void Remove( object value )
+        public bool Remove( T value )
         {
-            Remove( value, false );
+            return Remove( value, false );
         }
 
         /// <summary>Removes the node at the specified position from the list.</summary>
@@ -143,9 +150,9 @@ namespace TheCodingMonkey.Collections.Lists
         /// <summary>Determines the index of a specific item in the List.</summary>
         /// <param name="value">The object to locate in the list.</param>
         /// <returns>The zero-based index of the object in the list, or -1 if its not in the list.</returns>
-        public int IndexOf( object value )
+        public int IndexOf( T value )
         {
-            IEnumerator enumerator = new ForwardEnumerator( this );
+            IEnumerator enumerator = new ForwardEnumerator<T>( this );
             int index = -1;
 
             while ( enumerator.MoveNext() )
@@ -161,7 +168,7 @@ namespace TheCodingMonkey.Collections.Lists
         /// <summary>Determines whether the List contains a specific value.</summary>
         /// <param name="value">The object to locate in the list.</param>
         /// <returns>True if value is in the list, false otherwise.</returns>
-        public bool Contains( object value )
+        public bool Contains( T value )
         {
             return ( IndexOf( value ) >= 0 );
         }
@@ -180,36 +187,38 @@ namespace TheCodingMonkey.Collections.Lists
         /// <param name="value">New value to add.</param>
         /// <exception cref="ArgumentNullException">Thrown if position is null.</exception>
         /// <exception cref="InvalidCastException">Thrown if position is not derived from ListEnumerator.</exception>
-        public void Insert( IEnumerator position, object value )
+        public void Insert( IEnumerator position, T value )
         {
             if ( position == null )
                 throw new ArgumentNullException( "position", "position cannot be null" );
 
-            ListEnumerator enumerator = (ListEnumerator)position;
-            Node insertPoint = enumerator.CurrentNode;
+            ListEnumerator<T> enumerator = (ListEnumerator<T>)position;
+            Node<T> insertPoint = enumerator.CurrentNode;
             Insert( insertPoint, value );
         }
 
         /// <summary>Removes the first occurance of the given value from the list.</summary>
         /// <param name="value">Value to remove.</param>
         /// <param name="reverse">True to start at the end of the list.</param>
-        public void Remove( object value, bool reverse )
+        public bool Remove( T value, bool reverse )
         {
-            ListEnumerator enumerator;
+            ListEnumerator<T> enumerator;
             if ( reverse )
-                enumerator = new ReverseEnumerator( this );
+                enumerator = new ReverseEnumerator<T>( this );
             else
-                enumerator = new ForwardEnumerator( this );
+                enumerator = new ForwardEnumerator<T>( this );
 
             while ( enumerator.MoveNext() )
             {
-                Node node = (Node)enumerator.CurrentNode;
+                Node<T> node = (Node<T>)enumerator.CurrentNode;
                 if ( object.Equals( node.Value, value ) )
                 {
                     RemoveAt( enumerator );
-                    break;
+                    return true;
                 }
             }
+
+            return false;
         }
 
         /// <summary>Removes the node at the specified position from the list.</summary>
@@ -221,57 +230,34 @@ namespace TheCodingMonkey.Collections.Lists
             if ( position == null )
                 throw new ArgumentNullException( "position", "position cannot be null" );
 
-            ListEnumerator listEnum = (ListEnumerator)position;
-            Node remNode = (Node)listEnum.CurrentNode;
+            ListEnumerator<T> listEnum = (ListEnumerator<T>)position;
+            Node<T> remNode = (Node<T>)listEnum.CurrentNode;
             RemoveAt( remNode );
-        }
-
-        /// <summary>Returns a forward enumerator pointing to the head of the list.</summary>
-        /// <returns>IEnumerator for this list.</returns>
-        public IBiDirEnumerator GetEnumerator()
-        {
-            return new ForwardEnumerator( this );
-        }
-
-        /// <summary>Returns a forward enumerator pointing to the specified object, or null if the object
-        /// does not exist in the list.</summary>
-        /// <returns>IEnumerator for this list.</returns>
-        public IBiDirEnumerator GetEnumerator( object value )
-        {
-            ListEnumerator enumerator = new ForwardEnumerator( this );
-
-            while ( enumerator.MoveNext() )
-            {
-                Node node = (Node)enumerator.CurrentNode;
-                if ( object.Equals( node.Value, value ) )
-                    return enumerator;
-            }
-            return null;
         }
 
         /// <summary>Adds a new value after the passed in position.</summary>
         /// <param name="node">Insertion point.</param>
         /// <param name="value">New value to add.</param>
         /// <exception cref="ArgumentNullException">Thrown if node is null.</exception>
-        protected void Insert( Node node, object value )
+        protected void Insert( Node<T> node, T value )
         {
             if ( node == null )
                 throw new ArgumentNullException( "node", "node cannot be null" );
 
-            Node newNode = new Node( value );
+            Node<T> newNode = new Node<T>( value );
 
             // Add the appropriate references for the newNode
-            newNode.Prev = node.Prev;
+            newNode.Previous = node.Previous;
             newNode.Next = node;
 
             // Make sure that the nodes around newNode have correct references.
             // If insertPoint.Prev is null, then this is the head of the list
-            if ( node.Prev != null )
-                node.Prev.Next = newNode;
+            if ( node.Previous != null )
+                node.Previous.Next = newNode;
             else
                 Head = newNode;
 
-            node.Prev = newNode;
+            node.Previous = newNode;
 
             // Increment the count
             Count++;
@@ -280,32 +266,32 @@ namespace TheCodingMonkey.Collections.Lists
         /// <summary>Removes the specified node from the list.</summary>
         /// <param name="node">Node to remove</param>
         /// <exception cref="ArgumentNullException">Thrown if node is null.</exception>
-        protected void RemoveAt( Node node )
+        protected void RemoveAt( Node<T> node )
         {
             if ( node == null )
                 throw new ArgumentNullException( "node", "node cannot be null" );
 
             // Rebuild the previous node... if its null then I'm removing the head of the list
-            if ( node.Prev != null )
-                node.Prev.Next = node.Next;
+            if ( node.Previous != null )
+                node.Previous.Next = node.Next;
             else
                 Head = node.Next;
 
             // Rebuild the next node... if its null then I'm removing the tail of the list
             if ( node.Next != null )
-                node.Next.Prev = node.Prev;
+                node.Next.Previous = node.Previous;
             else
-                Tail = node.Prev;
+                Tail = node.Previous;
 
             Count--;
         }
 
-        private Node GetNodeAtIndex( int index )
+        private Node<T> GetNodeAtIndex( int index )
         {
             if ( ( index < 0 ) || ( index >= Count ) )
                 throw new ArgumentOutOfRangeException( "index", index, "Index must be greater than zero and less than the size of the list" );
 
-            Node current = Head;
+            Node<T> current = Head;
             while ( index-- > 0 )
                 current = current.Next;
 

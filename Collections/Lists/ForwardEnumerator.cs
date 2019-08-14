@@ -3,33 +3,33 @@
 namespace TheCodingMonkey.Collections.Lists
 {
     /// <summary>Forward Linked List Enumerator.</summary>
-    public class ForwardEnumerator : ListEnumerator
+    public class ForwardEnumerator<T> : ListEnumerator<T>
     {
         /// <summary>Standard Constructor.</summary>
         /// <param name="list">List to Enumerate.</param>
-        public ForwardEnumerator(LinkedList list)
+        public ForwardEnumerator(LinkedList<T> list)
         : base(list)
         { }
 
         /// <summary>Moves to the next item in the list.</summary>
         public override bool MoveNext()
         {
-            if (m_bReset && m_nodeCurrent == null)
+            if (isReset && CurrentNode == null)
             {
-                m_nodeCurrent = m_LinkedList.Head;
-                m_bReset = false;
+                CurrentNode = linkedList.Head;
+                isReset = false;
             }
             else
-                m_nodeCurrent = m_nodeCurrent.Next;
+                CurrentNode = CurrentNode.Next;
 
-            return (m_nodeCurrent != null);
+            return (CurrentNode != null);
         }
 
         /// <summary>Moves to the previous element in the list</summary>
-        public override bool MovePrev()
+        public override bool MovePrevious()
         {
-            m_nodeCurrent = m_nodeCurrent.Prev;
-            return (m_nodeCurrent != null);
+            CurrentNode = CurrentNode.Previous;
+            return (CurrentNode != null);
         }
     }
 }
