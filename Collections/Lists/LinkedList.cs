@@ -182,21 +182,6 @@ namespace TheCodingMonkey.Collections.Lists
             Count   = 0;
         }
 
-        /// <summary>Adds a new value at the specified position.</summary>
-        /// <param name="position">Insertion point.</param>
-        /// <param name="value">New value to add.</param>
-        /// <exception cref="ArgumentNullException">Thrown if position is null.</exception>
-        /// <exception cref="InvalidCastException">Thrown if position is not derived from ListEnumerator.</exception>
-        public void Insert( IEnumerator position, T value )
-        {
-            if ( position == null )
-                throw new ArgumentNullException( "position", "position cannot be null" );
-
-            ListEnumerator<T> enumerator = (ListEnumerator<T>)position;
-            Node<T> insertPoint = enumerator.CurrentNode;
-            Insert( insertPoint, value );
-        }
-
         /// <summary>Removes the first occurance of the given value from the list.</summary>
         /// <param name="value">Value to remove.</param>
         /// <param name="reverse">True to start at the end of the list.</param>
@@ -213,7 +198,7 @@ namespace TheCodingMonkey.Collections.Lists
                 Node<T> node = (Node<T>)enumerator.CurrentNode;
                 if ( object.Equals( node.Value, value ) )
                 {
-                    RemoveAt( enumerator );
+                    RemoveAt( enumerator.CurrentNode );
                     return true;
                 }
             }
@@ -221,30 +206,31 @@ namespace TheCodingMonkey.Collections.Lists
             return false;
         }
 
-        /// <summary>Removes the node at the specified position from the list.</summary>
-        /// <param name="position">Position to remove.</param>
-        /// <exception cref="ArgumentNullException">Thrown if position is null.</exception>
-        /// <exception cref="InvalidCastException">Thrown if position is not a ListEnumerator.</exception>
-        public void RemoveAt( IEnumerator position )
-        {
-            if ( position == null )
-                throw new ArgumentNullException( "position", "position cannot be null" );
-
-            ListEnumerator<T> listEnum = (ListEnumerator<T>)position;
-            Node<T> remNode = (Node<T>)listEnum.CurrentNode;
-            RemoveAt( remNode );
-        }
-
-        /// <summary>Adds a new value after the passed in position.</summary>
+        /// <summary>Adds a new value before or after the passed in position.</summary>
         /// <param name="node">Insertion point.</param>
         /// <param name="value">New value to add.</param>
+        /// <param name="insertBefore">True to insert before node, False to insert after. Default is after (False)</param>
         /// <exception cref="ArgumentNullException">Thrown if node is null.</exception>
-        protected void Insert( Node<T> node, T value )
+        public void Insert( Node<T> node, T value, bool insertBefore = false)
         {
             if ( node == null )
                 throw new ArgumentNullException( "node", "node cannot be null" );
 
             Node<T> newNode = new Node<T>( value );
+
+            if (insertBefore)
+            {
+                if (node.Previous != null)
+                    node = node.Previous;
+                else
+                {
+                    // Special Case for inserting a new Head
+                    newNode.Next = Head;
+                    Head = newNode;
+                    Count++;
+                    return;
+                }
+            }
 
             // Add the appropriate references for the newNode
             newNode.Previous = node.Previous;
@@ -266,7 +252,7 @@ namespace TheCodingMonkey.Collections.Lists
         /// <summary>Removes the specified node from the list.</summary>
         /// <param name="node">Node to remove</param>
         /// <exception cref="ArgumentNullException">Thrown if node is null.</exception>
-        protected void RemoveAt( Node<T> node )
+        public void RemoveAt( Node<T> node )
         {
             if ( node == null )
                 throw new ArgumentNullException( "node", "node cannot be null" );

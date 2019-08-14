@@ -336,13 +336,9 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 10 );
 
             // Insert 10 items at the front of the list
-            IEnumerator head = testList.GetEnumerator();
             for ( int i = 20; i >= 11; i-- )
-            {
-                head.Reset();
-                head.MoveNext();
-                testList.Insert( head, i );
-            }
+                testList.Insert( testList.Head, i );
+
             Assert.AreEqual( 20, testList.Count );
 
             // Verify the first 10 items are the inserted items
@@ -374,13 +370,8 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 20, true );
 
             // Remove the first 10 items from the list
-            IEnumerator enumerator = testList.GetEnumerator();
             for ( int i = 0; i < 10; i++ )
-            {
-                enumerator.Reset();
-                enumerator.MoveNext();
-                testList.RemoveAt( enumerator );
-            }
+                testList.RemoveAt( testList.Head );
 
             Assert.AreEqual( 10, testList.Count );
 
