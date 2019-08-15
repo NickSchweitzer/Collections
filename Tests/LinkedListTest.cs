@@ -214,7 +214,7 @@ namespace TheCodingMonkey.Collections.Tests
             for ( int i = 0; i < 25; i++ )
                 Assert.AreEqual( (i+1)*1000, testList[i] );
 
-            int nValue = (int)testList[50];
+            int nValue = testList[50];
         }
 
         [TestMethod, ExpectedException( typeof(System.ArgumentOutOfRangeException) )]
@@ -230,7 +230,7 @@ namespace TheCodingMonkey.Collections.Tests
         public void IndexerEmptyTest()
         {
             // Make sure that empty dictionary throws the proper exception
-            int nValue = (int)testList[1];
+            int nValue = testList[1];
         }
 
         [TestMethod]
@@ -331,7 +331,7 @@ namespace TheCodingMonkey.Collections.Tests
         }
 
         [TestMethod]
-        public void InsertItemsAtEnumerator()
+        public void InsertItemsAtNode()
         {
             AddToEmpty( 10 );
 
@@ -364,8 +364,31 @@ namespace TheCodingMonkey.Collections.Tests
             }
         }
 
+        [TestMethod]
+        public void InsertItemsBeforeNode()
+        {
+            Assert.IsTrue(testList.Empty);
+            testList.Add(10);
+            Assert.AreEqual(1, testList.Count);
+
+            // Insert 10 items at the front of the list
+            for (int i = 9; i > 0; i--)
+                testList.Insert(testList.Head, i, true);
+
+            Assert.AreEqual(10, testList.Count);
+
+            // Verify the list is 1 - 10 in order
+            int iTest = 1;
+            var enumerator = testList.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                Assert.AreEqual(iTest, enumerator.Current);
+                iTest++;
+            }
+        }
+
         [TestMethod, ExpectedException( typeof(System.ArgumentNullException) )]
-        public void RemoveItemsAtEnumerator()
+        public void RemoveItemsAtNode()
         {
             AddToEmpty( 20, true );
 
@@ -434,6 +457,8 @@ namespace TheCodingMonkey.Collections.Tests
         public void CloneEmptyTest()
         {
             LinkedList<int> cloned = MakeClone();
+            Assert.AreNotEqual(cloned, testList);
+            Assert.AreEqual(cloned.Count, testList.Count);
         }
-	}
+    }
 }

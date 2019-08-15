@@ -1,0 +1,15 @@
+version: 1.0.{build}
+image: Visual Studio 2019
+configuration: Release
+before_build:
+- nuget restore
+- choco install opencover.portable
+- choco install codecov
+
+build:
+  project: Collections.sln
+  verbosity: minimal
+
+test_script:
+- OpenCover.Console.exe -register:user -target:"vstest.console.exe" -targetargs:"/logger:Appveyor .\Tests\bin\Release\TheCodingMonkey.Collections.Tests.dll" -output:".\Tests_coverage.xml"
+- codecov -f "Tests_coverage.xml"

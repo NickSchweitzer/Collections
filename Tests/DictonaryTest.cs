@@ -437,6 +437,7 @@ namespace TheCodingMonkey.Collections.Tests
         {
             IDictionary<int, int> cloned = MakeClone();
             Assert.AreNotEqual(cloned, m_Dictionary);
+            Assert.AreEqual(cloned.Count, m_Dictionary.Count);
         }
     }
 }
