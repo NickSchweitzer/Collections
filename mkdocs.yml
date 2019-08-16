@@ -1,0 +1,6 @@
+site_name: Collections Documentation
+docs_dir: 'Docs'
+theme: 'readthedocs'
+
+markdown_extensions:
+    - sane_lists

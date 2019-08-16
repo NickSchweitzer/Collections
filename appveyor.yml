@@ -9,6 +9,30 @@ skip_commits:
   - '.readthedocs.yml'
   - '**/*.bat'
   - '.gitignore'
+
+install:
+  - ps: |
+     function install-devpack ($version, $location) {
+         Write-Host ".NET Framework $($version) Developer Pack..." -ForegroundColor Cyan
+         Write-Host "Downloading..."
+         $exePath = "$env:TEMP\$($version)-devpack.exe"
+         (New-Object Net.WebClient).DownloadFile($location, $exePath)
+         Write-Host "Installing..."
+         cmd /c start /wait "$exePath" /quiet /norestart
+         del $exePath
+         Write-Host "Installed" -ForegroundColor Green
+     }
+     install-devpack -version "4.7" -location "https://download.microsoft.com/download/A/1/D/A1D07600-6915-4CB8-A931-9A980EF47BB7/NDP47-DevPack-KB3186612-ENU.exe"
+
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+
 before_build:
 - nuget restore
 - choco install opencover.portable
@@ -16,8 +40,17 @@ before_build:
 
 build:
   project: Collections.sln
+  publish_nuget: true
   verbosity: minimal
 
 test_script:
-- OpenCover.Console.exe -register:user -target:"vstest.console.exe" -targetargs:"/logger:Appveyor .\Tests\bin\Release\TheCodingMonkey.Collections.Tests.dll" -output:".\Tests_coverage.xml"
+- vstest.console /logger:Appveyor ".\Tests\bin\Release\net45\TheCodingMonkey.Collections.Tests.dll" ".\Tests\bin\Release\net46\TheCodingMonkey.Collections.Tests.dll" ".\Tests\bin\Release\net47\TheCodingMonkey.Collections.Tests.dll" ".\Tests\bin\Release\netcoreapp2.0\TheCodingMonkey.Collections.Tests.dll"
+- OpenCover.Console.exe -register:user -target:"vstest.console.exe" -targetargs:".\Tests\bin\Release\net47\TheCodingMonkey.Collections.Tests.dll" -output:".\Tests_coverage.xml"
 - codecov -f "Tests_coverage.xml"
+
+#deploy:
+#- provider: NuGet
+#  api_key:
+#    secure: FCTeK6seq0e90uq+7DLRVKbseyxT3/BDaTNCEWTQ2MRjvS3x533Blqs1dpvfRVt3
+#  on:
+#    branch: master
