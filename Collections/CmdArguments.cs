@@ -12,11 +12,13 @@ namespace TheCodingMonkey.Collections
 
         /// <summary>Standard Constructor</summary>
         /// <param name="args">Command Line Arguments from Main</param>
+        /// <param name="caseSensitive">Set to true if argument keys should be treated in a case sensitive manner.</param>
         /// <remarks>Valid parameters forms:
         /// {-,/,--}param{ ,=,:}((",')value(",'))
         /// Examples: -param1 value1 --param2 /param3:"Test-:-work" /param4=happy -param5 '--=nice=--'</remarks>
-        public CmdArguments( string[] args )
+        public CmdArguments(string[] args, bool caseSensitive = false)
         {
+            CaseSensitive = caseSensitive;
             string lastName = null;             // Last name which was found
             char [] trimChars = {'"','\''};     // Set of characters to trim from a command line argument
 
@@ -34,10 +36,16 @@ namespace TheCodingMonkey.Collections
                 {			
                     // Matched a name, optionally with inline value
                     lastName = match.Groups["name"].Value;
+                    if (!caseSensitive)
+                        lastName = lastName.ToLower();
+
                     Add( lastName, match.Groups["value"].Value.Trim( trimChars ) );
                 }
             }
         }
+
+        /// <summary>Determines if command line argument keys are treated in a case senesitive manner. By default, the parser is case insensitive.</summary>
+        public bool CaseSensitive { get; private set; } = false;
 
         /// <summary>Gets or sets the element with the specified key.</summary>
         /// <param name="key">Command line argument to get or set the value for</param>
@@ -46,12 +54,16 @@ namespace TheCodingMonkey.Collections
         {
             get
             {
-                key = key.ToLower();
+                if (!CaseSensitive)
+                    key = key.ToLower();
+
                 return base[key];
             }
             set
             {
-                key = key.ToLower();
+                if (!CaseSensitive)
+                    key = key.ToLower();
+
                 base[key] = value;
             }
         }
@@ -61,7 +73,9 @@ namespace TheCodingMonkey.Collections
         /// <returns>True if the given key was provied, false otherwise.</returns>
         public override bool ContainsKey(string key)
         {
-            key = key.ToLower();
+            if (!CaseSensitive)
+                key = key.ToLower();
+
             return base.ContainsKey(key);
         }
 
@@ -70,7 +84,9 @@ namespace TheCodingMonkey.Collections
         /// <param name="value">The value to add for the given key.</param>
         public override void Add(string key, string value)
         {
-            key = key.ToLower();
+            if (!CaseSensitive)
+                key = key.ToLower();
+
             base.Add(key, value);
         }
     }

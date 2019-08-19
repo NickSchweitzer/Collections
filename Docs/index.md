@@ -53,6 +53,8 @@ Valid parameters forms are:
 
 Examples: `-param1 value1 --param2 /param3:"Test-:-work" /param4=happy -param5 '--=nice=--'`
 
+[More Information](./CmdArguments.md)
+
 ## Iterators
 
 # Samples
