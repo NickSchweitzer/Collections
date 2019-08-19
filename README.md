@@ -17,4 +17,4 @@ This library contains implementations of the following collections:
 * LinkedList
 * Command Line Arguments Collection
 
-More documentation on the classes, including sample code can be found on [ReadTheDocs](ttps://thecodingmonkeycollections.readthedocs.io/en/latest/).
+More documentation on the classes, including sample code can be found on [ReadTheDocs](https://thecodingmonkeycollections.readthedocs.io/en/latest/).
