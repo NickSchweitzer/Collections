@@ -195,6 +195,13 @@ namespace TheCodingMonkey.Collections.Tests
             {
                 Assert.IsTrue(  m_Dictionary.ContainsKey( i ) );
                 Assert.IsFalse( m_Dictionary.ContainsKey( i*1000 ) );
+
+                int tryGet;
+                Assert.IsTrue(m_Dictionary.TryGetValue(i, out tryGet));
+                Assert.AreEqual(i * 1000, tryGet);
+
+                int wontGet;
+                Assert.IsFalse(m_Dictionary.TryGetValue(i * 1000, out wontGet));
             }
         }
 
@@ -256,7 +263,7 @@ namespace TheCodingMonkey.Collections.Tests
             int nValue  = (int)m_Dictionary[nRand];
         }
 
-        [TestMethod, ExpectedException( typeof(ArgumentNullException) )]
+        [TestMethod]
         public void IndexerNullTest()
         {
             Assert.AreEqual(0, referenceDictionary.Count);
@@ -267,7 +274,9 @@ namespace TheCodingMonkey.Collections.Tests
             Assert.AreEqual(25, referenceDictionary.Count);
 
             // Make sure that null throws the proper exception
-            var willFail = referenceDictionary[null];
+            Assert.ThrowsException<ArgumentNullException>(() => { var willFail = referenceDictionary[null]; });
+            Assert.ThrowsException<ArgumentNullException>(() => { referenceDictionary[null] = new CloneableInt(0); });
+            Assert.ThrowsException<ArgumentNullException>(() => referenceDictionary.ContainsKey(null));
         }
 
         [TestMethod, ExpectedException( typeof(NotSupportedException) )]
