@@ -1,6 +1,8 @@
 # The Coding Monkey Collections
 
-# Overview
+This library contains collections and algorithms that are not part of the standard .NET Generic Collections.  This library is compatible with the full .NET library, as well as .NET Core.
+
+# Collections
 
 ## Binary Search Tree Implementations
 
@@ -55,9 +57,7 @@ Examples: `-param1 value1 --param2 /param3:"Test-:-work" /param4=happy -param5 '
 
 [More Information](./CmdArguments.md)
 
-## Iterators
-
-# Samples
+# Iterators
 
 # Library References
 

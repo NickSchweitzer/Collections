@@ -17,7 +17,7 @@ public class PreOrderFlatEnumerator<TKey, TValue> : FlatEnumerator<TKey, TValue>
 
 | name | description |
 | --- | --- |
-| override [Traverse](PreOrderFlatEnumerator-2/Traverse.md)(…) | Defines a traversal function for shallow copying the elements from the BinarySearchTree into the passed in ArrayList. |
+| override [Traverse](PreOrderFlatEnumerator-2/Traverse.md)(…) | Defines a traversal function for shallow copying the elements from the BinarySearchTree into the passed in Collection. |
 
 ## See Also
 

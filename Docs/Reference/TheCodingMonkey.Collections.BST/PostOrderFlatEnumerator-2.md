@@ -17,7 +17,7 @@ public class PostOrderFlatEnumerator<TKey, TValue> : FlatEnumerator<TKey, TValue
 
 | name | description |
 | --- | --- |
-| override [Traverse](PostOrderFlatEnumerator-2/Traverse.md)(…) | Defines a traversal function for shallow copying the elements from the BinarySearchTree into the passed in ArrayList. |
+| override [Traverse](PostOrderFlatEnumerator-2/Traverse.md)(…) | Defines a traversal function for shallow copying the elements from the BinarySearchTree into the passed in Collection. |
 
 ## See Also
 

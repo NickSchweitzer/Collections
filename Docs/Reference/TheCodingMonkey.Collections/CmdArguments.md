@@ -11,6 +11,7 @@ public class CmdArguments : StringDictionary
 | name | description |
 | --- | --- |
 | [CmdArguments](CmdArguments/CmdArguments.md)(…) | Standard Constructor |
+| [CaseSensitive](CmdArguments/CaseSensitive.md) { get; } | Determines if command line argument keys are treated in a case senesitive manner. By default, the parser is case insensitive. |
 | override [Item](CmdArguments/Item.md) { get; set; } | Gets or sets the element with the specified key. |
 | override [Add](CmdArguments/Add.md)(…) | Adds a element with the provided key and value to the Dictionary, if they weren't part of the original command line argument string. |
 | override [ContainsKey](CmdArguments/ContainsKey.md)(…) | Determines whether the Command Line arguments contain an element with the specified key. The Key is case insensitive. |

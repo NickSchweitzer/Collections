@@ -21,7 +21,7 @@ static void Main(string[] args)
 ```
 
 ```shell
-> program.exe -boolswitch /spaceswitch spacevalue --equalswitch=equalvalue --colonswitch:colonvalue
+> program.exe -boolswitch /spaceswitch spacevalue -equalswitch=equalvalue --colonswitch:colonvalue
 boolswitch = true
 spaceswitch = spacevalue
 equalswitch = equalvalue

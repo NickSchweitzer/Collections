@@ -1,6 +1,6 @@
 # PostOrderFlatEnumerator&lt;TKey,TValue&gt;.Traverse method
 
-Defines a traversal function for shallow copying the elements from the BinarySearchTree into the passed in ArrayList.
+Defines a traversal function for shallow copying the elements from the BinarySearchTree into the passed in Collection.
 
 ```csharp
 protected override void Traverse(Node<TKey, TValue> current, 

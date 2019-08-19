@@ -3,12 +3,13 @@
 Standard Constructor
 
 ```csharp
-public CmdArguments(string[] args)
+public CmdArguments(string[] args, bool caseSensitive = false)
 ```
 
 | parameter | description |
 | --- | --- |
 | args | Command Line Arguments from Main |
+| caseSensitive | Set to true if argument keys should be treated in a case sensitive manner. |
 
 ## Remarks
 
