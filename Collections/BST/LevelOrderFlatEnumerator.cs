@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TheCodingMonkey.Collections.BST
 {
-    /// <summary>In Order Flat Enumerator.  The Binary Search Tree is enumerated in the order of Left Node, Current Value, Right Node at time of Enumerator construction.</summary>
+    /// <summary>Level Order Flat Enumerator.  The Binary Search Tree is enumerated breadth first at time of Enumerator construction.</summary>
     public class LevelOrderFlatEnumerator<TKey, TValue> : FlatEnumerator<TKey, TValue>
         where TKey : IComparable<TKey>
     {
@@ -16,7 +16,7 @@ namespace TheCodingMonkey.Collections.BST
         { }
 
         /// <summary>Defines a traversal function for shallow copying the elements from the BinarySearchTree
-        /// into the passed in ArrayList.</summary>
+        /// into the passed in Collection.</summary>
         /// <param name="current">Node to Traverse</param>
         /// <param name="contents">ArrayList to contain the re-ordered elements.</param>
         protected override void Traverse(Node<TKey, TValue> current, ICollection<KeyValuePair<TKey, TValue>> contents)

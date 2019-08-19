@@ -1,6 +1,6 @@
 # InOrderFlatEnumerator&lt;TKey,TValue&gt; class
 
-InOrder Traversal Enumerator. The BinarySearchTree is enumerated in the order of Left Node, Current Value, Right Node.
+In Order Traversal Enumerator. The BinarySearchTree is enumerated in the order of Left Node, Current Value, Right Node.
 
 ```csharp
 public class InOrderFlatEnumerator<TKey, TValue> : FlatEnumerator<TKey, TValue>

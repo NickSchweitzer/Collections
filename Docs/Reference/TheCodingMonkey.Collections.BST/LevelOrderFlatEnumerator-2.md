@@ -1,6 +1,6 @@
 # LevelOrderFlatEnumerator&lt;TKey,TValue&gt; class
 
-In Order Flat Enumerator. The Binary Search Tree is enumerated in the order of Left Node, Current Value, Right Node at time of Enumerator construction.
+Level Order Flat Enumerator. The Binary Search Tree is enumerated breadth first at time of Enumerator construction.
 
 ```csharp
 public class LevelOrderFlatEnumerator<TKey, TValue> : FlatEnumerator<TKey, TValue>

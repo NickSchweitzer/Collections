@@ -1,5 +1,7 @@
 # PostOrderFlatEnumerator&lt;TKey,TValue&gt; class
 
+Post Order Traversal Enumerator. The BinarySearchTree is enumerated in the order of Left Node, Right Node, Current Value.
+
 ```csharp
 public class PostOrderFlatEnumerator<TKey, TValue> : FlatEnumerator<TKey, TValue>
     where TKey : IComparable<TKey>
