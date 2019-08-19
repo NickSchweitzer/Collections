@@ -44,7 +44,13 @@ Binary Search Trees support iteration in differnet ways. All of the Binary Searc
 
 ## Skip List
 
+Skip lists are a data structure that defines a linked hierary of sublists, with each sublist having fewer items than the one before. In many ways its a combination of an array with a linked list. Search and insert are both O(log n).
+
+This implementation implements [`IDictionary<TKey, TValue>`](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2) and can be used as a drop in replacement for the [`Dictionary`](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.valuecollection) class, assuming that `TKey` implements [`ICompareable<T>`](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable-1).
+
 ## Linked List
+
+This linked list implementation was origionally written prior to .NET 2.0, which is when Microsoft added its own LinkedList implementation to the [`System.Collections.Generic` namespace](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic). It supports many of the same operations, though with slightly different method names.
 
 ## [Command Line Argument Collection](./Reference/TheCodingMonkey.Collections/CmdArguments.md)
 
