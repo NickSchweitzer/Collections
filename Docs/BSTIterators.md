@@ -10,3 +10,44 @@ For a Binary Search Tree with the nodes as defined above, the different iterator
 * Pre-Order: 1, 2, 4, 5, 3
 * Post-Order: 4, 5, 2, 3, 1
 * Level Order: 1, 2, 3, 4, 5
+
+Each of the Binary Search Tree implementations return an [InOrderFlatEnumerator](.\Reference\TheCodingMonkey.Collections.BST\InOrderFlatEnumerator-2.md) as the default implemenation of [`IEnumerable.GetEnumerator()`](https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable.getenumerator).
+
+Sample:
+```csharp
+    var bst = new BinarySearchTree<int, int>()
+    {
+        { 1, 1 },
+        { 2, 2 },
+        { 3, 3 },
+        { 4, 4 },
+        { 5, 5 },
+    };
+
+    Console.Write("In Order: ");
+    foreach (var inorder in bst)
+        Console.Write($"{inorder.Key} ");
+
+    Console.Write("\nPre Order: ");
+    var preorder = new PreOrderFlatEnumerator<int, int>(bst);
+    while(preorder.MoveNext())
+        Console.Write($"{preorder.Current.Key} ");
+
+    Console.Write("\nPost Order: ");
+    var postorder = new PostOrderFlatEnumerator<int, int>(bst);
+    while (postorder.MoveNext())
+        Console.Write($"{postorder.Current.Key} ");
+
+    Console.Write("\nLevel Order: ");
+    var levelorder = new LevelOrderFlatEnumerator<int, int>(bst);
+    while (levelorder.MoveNext())
+        Console.Write($"{levelorder.Current.Key} ");
+```
+
+Output:
+```
+In Order: 4 2 5 1 3 
+Pre Order: 1 2 4 5 3 
+Post Order: 4 5 2 3 1
+Level Order: 1 2 3 4 5
+```
