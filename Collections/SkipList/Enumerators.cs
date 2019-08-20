@@ -28,7 +28,7 @@ namespace TheCodingMonkey.Collections.SkipList
         /// <summary>Sets the enumerator to its initial position, which is before the first element in the collection.</summary>
         public void Reset()
         {
-            m_nodeCurrent = null;
+            m_nodeCurrent = m_SkipList.Head;
         }
 
         /// <summary>Gets both the key and the value of the current dictionary entry.</summary>
@@ -51,13 +51,13 @@ namespace TheCodingMonkey.Collections.SkipList
         }
 
         /// <summary>Gets the key of the current dictionary entry.</summary>
-        public object Key
+        public TKey Key
         {
             get { return m_nodeCurrent.Key; }
         }
 
         /// <summary>Gets the value of the current dictionary entry.</summary>
-        public object Value
+        public TValue Value
         {
             get { return m_nodeCurrent.Value; }
         }

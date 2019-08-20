@@ -211,18 +211,23 @@ namespace TheCodingMonkey.Collections.Tests
             AddToEmpty( 25, true );
 
             // Get enumerators for everything
-            int i = 1;
             ICollection<int> lstKeys  = m_Dictionary.Keys;
             IEnumerator<int> enumKeys = lstKeys.GetEnumerator();
             IEnumerator<KeyValuePair<int, int>> enumDict = m_Dictionary.GetEnumerator();
 
             Assert.AreEqual( 25, lstKeys.Count );
-            while ( enumKeys.MoveNext() && enumDict.MoveNext() )
+            for (int doTwice = 0; doTwice < 2; doTwice++)
             {
-                // Make sure the keys list has everything in the right order
-                KeyValuePair<int, int> entry = enumDict.Current;
-                Assert.AreEqual( entry.Key, enumKeys.Current );
-                Assert.AreEqual( i++, enumKeys.Current );
+                int i = 1;
+                while (enumKeys.MoveNext() && enumDict.MoveNext())
+                {
+                    // Make sure the keys list has everything in the right order
+                    KeyValuePair<int, int> entry = enumDict.Current;
+                    Assert.AreEqual(entry.Key, enumKeys.Current);
+                    Assert.AreEqual(i++, enumKeys.Current);
+                }
+                enumKeys.Reset();
+                enumDict.Reset();
             }
         }
 
