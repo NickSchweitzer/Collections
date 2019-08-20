@@ -52,8 +52,7 @@ for:
       - configuration: Debug
 
   test_script:
-    - vstest.console /logger:Appveyor ".\Tests\bin\$(configuration)\net45\Tests.dll" ".\Tests\bin\$(configuration)\net46\Tests.dll" ".\Tests\bin\$(configuration)\net47\Tests.dll" ".\Tests\bin\$(configuration)\netcoreapp2.0\Tests.dll"
-    - OpenCover.Console.exe -register:user -target:"vstest.console.exe" -targetargs:".\Tests\bin\$(configuration)\net47\Tests.dll" -output:".\Tests_coverage.xml"
+    - OpenCover.Console.exe -register:user -target:"vstest.console.exe" -targetargs:".\Tests\bin\Debug\net47\Tests.dll" -output:".\Tests_coverage.xml"
     - codecov -f "Tests_coverage.xml"
 
 #deploy:
