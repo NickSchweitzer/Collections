@@ -28,9 +28,12 @@ namespace TheCodingMonkey.Collections.BST
             }
 
             contents.Add(new KeyValuePair<TKey, TValue>(current.Key, current.Value));
-            current = m_Queue.Dequeue();
-            Enqueue(current);
-            Traverse(current, contents);
+            if (m_Queue.Count > 0)
+            {
+                current = m_Queue.Dequeue();
+                Enqueue(current);
+                Traverse(current, contents);
+            }
         }
 
         private void Enqueue(Node<TKey, TValue> current)

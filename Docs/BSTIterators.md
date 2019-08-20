@@ -15,7 +15,7 @@ Each of the Binary Search Tree implementations return an [InOrderFlatEnumerator]
 
 Sample:
 ```csharp
-    var bst = new BinarySearchTree<int, int>()
+    var bst = new AVLTree<int, int>()
     {
         { 1, 1 },
         { 2, 2 },
@@ -46,8 +46,8 @@ Sample:
 
 Output:
 ```
-In Order: 4 2 5 1 3 
-Pre Order: 1 2 4 5 3 
-Post Order: 4 5 2 3 1
-Level Order: 1 2 3 4 5
+In Order: 1 2 3 4 5 
+Pre Order: 2 1 4 3 5 
+Post Order: 1 3 5 4 2 
+Level Order: 2 1 4 3 5
 ```
