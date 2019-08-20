@@ -9,10 +9,6 @@ namespace TheCodingMonkey.Collections.SkipList
 	{
         private NodeList<TKey, TValue> m_lstNodes;
 
-        /// <summary>Default Constructor Not Available</summary>
-        private Node() 
-        {}
-
         /// <summary>SkipNode Constructor</summary>
         /// <param name="nHeight">Number of items this node references.</param>
         internal Node( int nHeight ) 
