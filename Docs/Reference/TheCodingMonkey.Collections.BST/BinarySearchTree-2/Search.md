@@ -3,7 +3,7 @@
 Recursive function used to find a given value in a subtree where current is the root node.
 
 ```csharp
-protected Node<TKey, TValue> Search(Node<TKey, TValue> current, object key)
+protected Node<TKey, TValue> Search(Node<TKey, TValue> current, TKey key)
 ```
 
 ## See Also

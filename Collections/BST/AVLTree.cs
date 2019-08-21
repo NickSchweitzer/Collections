@@ -11,12 +11,8 @@ namespace TheCodingMonkey.Collections.BST
         public AVLTree()
         { }
 
-        /// <summary>AVL Tree Constructor</summary>
-        /// <param name="comparer">Comparison object to use for comparing dictionary keys.</param>
-        public AVLTree( IComparer comparer )
-        : base( comparer )
-        { }
-
+        /// <summary>Helper function used during Clone to create a new AVL Tree</summary>
+        /// <returns>A new reference to an AVL Tree that can be used in a clone operation.</returns>
         protected override BinarySearchTree<TKey, TValue> CreateInstance()
         {
             return new AVLTree<TKey, TValue>

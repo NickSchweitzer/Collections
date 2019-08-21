@@ -1,29 +1,10 @@
-# BinarySearchTree&lt;TKey,TValue&gt; constructor (1 of 2)
+# BinarySearchTree&lt;TKey,TValue&gt; constructor
 
 Default Constructor.
 
 ```csharp
 public BinarySearchTree()
 ```
-
-## See Also
-
-* class [BinarySearchTree&lt;TKey,TValue&gt;](../BinarySearchTree-2.md)
-* namespace [TheCodingMonkey.Collections.BST](../../TheCodingMonkey.Collections.md)
-
----
-
-# BinarySearchTree&lt;TKey,TValue&gt; constructor (2 of 2)
-
-Binary Search Tree Constructor
-
-```csharp
-public BinarySearchTree(IComparer comparer)
-```
-
-| parameter | description |
-| --- | --- |
-| comparer | Comparison object to use for comparing dictionary keys. |
 
 ## See Also
 

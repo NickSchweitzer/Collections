@@ -3,7 +3,7 @@
 Gets the value of the current dictionary entry.
 
 ```csharp
-public object Value { get; }
+public TValue Value { get; }
 ```
 
 ## See Also

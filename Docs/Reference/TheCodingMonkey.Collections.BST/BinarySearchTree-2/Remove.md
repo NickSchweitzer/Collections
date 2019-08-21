@@ -1,8 +1,25 @@
 # BinarySearchTree&lt;TKey,TValue&gt;.Remove method (1 of 2)
 
+Removes the node containing this data from the tree.
+
 ```csharp
 public bool Remove(KeyValuePair<TKey, TValue> pair)
 ```
+
+| parameter | description |
+| --- | --- |
+| pair | KeyValuePair to remove from the tree. |
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentNullException | Thrown if key is null. |
+| InvalidCastException | Thrown if key is not of type IComparable. |
+
+## Remarks
+
+If data does not exist in the tree, then the tree remains unchanged. No exception is thrown.
 
 ## See Also
 

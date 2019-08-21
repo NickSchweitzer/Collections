@@ -8,18 +8,9 @@ namespace TheCodingMonkey.Collections.BST
     public class BinarySearchTree<TKey, TValue> : ICloneable, IDictionary<TKey, TValue>
         where TKey : IComparable<TKey>
     {
-        IComparer m_pComparer = null;
-
         /// <summary>Default Constructor.</summary>
         public BinarySearchTree()
         { }
-
-        /// <summary>Binary Search Tree Constructor</summary>
-        /// <param name="comparer">Comparison object to use for comparing dictionary keys.</param>
-        public BinarySearchTree( IComparer comparer )
-        {
-            m_pComparer = comparer;
-        }
 
         /// <summary>Makes a deep copy of this Tree.</summary>
         /// <returns>New instance of the tree.</returns>
@@ -38,6 +29,8 @@ namespace TheCodingMonkey.Collections.BST
             return clone;
         }
 
+        /// <summary>Helper function used during Clone to create the correct instance of the specific Binary Search Tree implementation</summary>
+        /// <returns>A new reference to a Binary Search Tree derived object that can be used in a clone operation.</returns>
         protected virtual BinarySearchTree<TKey, TValue> CreateInstance()
         {
             return new BinarySearchTree<TKey, TValue>
@@ -129,6 +122,10 @@ namespace TheCodingMonkey.Collections.BST
             }
         }
 
+        /// <summary>Attempts to retrieve the value for the given key.</summary>
+        /// <param name="key">Key to search for in the binary search tree.</param>
+        /// <param name="value">Value that is present for the given key, ir present. Otherwise the default value for the object is returned.</param>
+        /// <returns>True if the key is present in the tree, false otherwise.</returns>
         public bool TryGetValue( TKey key, out TValue value )
         {
             value = default;
@@ -175,6 +172,11 @@ namespace TheCodingMonkey.Collections.BST
             Count   = 0;
         }
 
+        /// <summary>Determines if the value is contained somewhere in the tree.</summary>
+        /// <param name="pair">KeyValuePair to find. Only the Key property is used in the search.</param>
+        /// <returns>True if exists in the tree, false otherwise.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if key is null.</exception>
+        /// <exception cref="InvalidCastException">Thrown if key is not of type IComparable.</exception>
         public bool Contains( KeyValuePair<TKey, TValue> pair )
         {
             return ContainsKey( pair.Key );
@@ -193,6 +195,11 @@ namespace TheCodingMonkey.Collections.BST
             return Search( Root, key ) != null;
         }
 
+        /// <summary>Adds a node to the tree.</summary>
+        /// <param name="pair">KeyValuePair containing both the Key and Value to add together.</param>
+        /// <exception cref="ArgumentNullException">Thrown if key is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if key already exists in the tree.</exception>
+        /// <exception cref="InvalidCastException">Thrown if key is not of type IComparable.</exception>
         public void Add( KeyValuePair<TKey, TValue> pair )
         {
             Add( pair.Key, pair.Value );
@@ -219,7 +226,7 @@ namespace TheCodingMonkey.Collections.BST
 
             while ( current != null )
             {
-                result = Compare( current.Key, node.Key );
+                result = current.Key.CompareTo(node.Key);
                 // If they are equal, then attempting to insert a duplicate.  Throw an Exception
                 if ( result == 0 )
                     throw new ArgumentException( "Attempting to add duplicate item to the tree.  The items has a value of " + data.ToString(), "data" );
@@ -244,7 +251,7 @@ namespace TheCodingMonkey.Collections.BST
                 Root = node;
             else
             {
-                result = Compare( parent.Key, node.Key );
+                result = parent.Key.CompareTo(node.Key);
                 // Make this the new left leaf
                 if ( result > 0 )
                     parent.Left = node;
@@ -258,6 +265,11 @@ namespace TheCodingMonkey.Collections.BST
                 Root.Check();
         }
 
+        /// <summary>Removes the node containing this data from the tree.</summary>
+        /// <param name="pair">KeyValuePair to remove from the tree.</param>
+        /// <exception cref="ArgumentNullException">Thrown if key is null.</exception>
+        /// <exception cref="InvalidCastException">Thrown if key is not of type IComparable.</exception>
+        /// <remarks>If data does not exist in the tree, then the tree remains unchanged.  No exception is thrown.</remarks>
         public bool Remove( KeyValuePair<TKey, TValue> pair )
         {
             return Remove( pair.Key );
@@ -280,7 +292,7 @@ namespace TheCodingMonkey.Collections.BST
             int result = -1;
             while ( ( result != 0 ) && ( current != null ) )
             {
-                result = Compare( current.Key, key );
+                result = current.Key.CompareTo(key);
                 
                 // Data must be in left subtree
                 if ( result > 0 )
@@ -309,7 +321,7 @@ namespace TheCodingMonkey.Collections.BST
                     Root = current.Left;
                 else
                 {
-                    result = Compare( parent.Key, current.Key );
+                    result = parent.Key.CompareTo(current.Key);
                     // Parent's left subtree is now current's left subtree
                     if ( result > 0 )
                         parent.Left = current.Left;
@@ -325,7 +337,7 @@ namespace TheCodingMonkey.Collections.BST
                     Root = current.Right;
                 else
                 {
-                    result = Compare( parent.Key, current.Key );
+                    result = parent.Key.CompareTo(current.Key);
                     // Parent's left subtree is now current's right subtree
                     if ( result > 0 )
                         parent.Left = current.Right;
@@ -357,7 +369,7 @@ namespace TheCodingMonkey.Collections.BST
                     Root = leftmost;
                 else
                 {
-                    result = Compare( parent.Key, current.Key );
+                    result = parent.Key.CompareTo(current.Key);
                     // Parent's left subtree is now current's right subtree
                     if ( result > 0 )
                         parent.Left = leftmost;
@@ -387,21 +399,8 @@ namespace TheCodingMonkey.Collections.BST
         /// <summary>Root node of the tree.</summary>
         internal Node<TKey, TValue> Root;
 
-        /// <summary>Compares two objects using the IComparable interface if possible, then using one of the 
-        /// alternate comparison methods if needed.</summary>
-        protected int Compare( object left, object right )
-        {
-            IComparable comp = left as IComparable;
-            if ( comp != null )
-                return comp.CompareTo( right );
-            else if ( m_pComparer != null )
-                return m_pComparer.Compare( left, right );
-            else
-                throw new ArgumentException( "Object does not implement IComparable, and no IComparer object was given" );
-        }
-
         /// <summary>Recursive function used to find a given value in a subtree where current is the root node.</summary>
-        protected Node<TKey, TValue> Search( Node<TKey, TValue> current, object key )
+        protected Node<TKey, TValue> Search( Node<TKey, TValue> current, TKey key )
         {
             // Node not found, return null.
             if ( current == null )
@@ -409,7 +408,7 @@ namespace TheCodingMonkey.Collections.BST
             else
             {
                 // Figure out where the data might be
-                int result = Compare( current.Key, key );
+                int result = current.Key.CompareTo(key);
                 
                 // Data equal.  This is the node
                 if ( result == 0 )

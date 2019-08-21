@@ -1,8 +1,14 @@
 # RedBlackTree&lt;TKey,TValue&gt;.CreateInstance method
 
+Helper function used during Clone to create a new RedBlackTree
+
 ```csharp
 protected override BinarySearchTree<TKey, TValue> CreateInstance()
 ```
+
+## Return Value
+
+A new reference to a Red Black Tree that can be used in a clone operation.
 
 ## See Also
 

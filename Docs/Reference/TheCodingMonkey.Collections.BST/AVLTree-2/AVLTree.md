@@ -1,29 +1,10 @@
-# AVLTree&lt;TKey,TValue&gt; constructor (1 of 2)
+# AVLTree&lt;TKey,TValue&gt; constructor
 
 Default Constructor
 
 ```csharp
 public AVLTree()
 ```
-
-## See Also
-
-* class [AVLTree&lt;TKey,TValue&gt;](../AVLTree-2.md)
-* namespace [TheCodingMonkey.Collections.BST](../../TheCodingMonkey.Collections.md)
-
----
-
-# AVLTree&lt;TKey,TValue&gt; constructor (2 of 2)
-
-AVL Tree Constructor
-
-```csharp
-public AVLTree(IComparer comparer)
-```
-
-| parameter | description |
-| --- | --- |
-| comparer | Comparison object to use for comparing dictionary keys. |
 
 ## See Also
 

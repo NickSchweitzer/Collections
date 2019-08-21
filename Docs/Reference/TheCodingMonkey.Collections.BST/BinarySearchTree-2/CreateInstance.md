@@ -1,8 +1,14 @@
 # BinarySearchTree&lt;TKey,TValue&gt;.CreateInstance method
 
+Helper function used during Clone to create the correct instance of the specific Binary Search Tree implementation
+
 ```csharp
 protected virtual BinarySearchTree CreateInstance()
 ```
+
+## Return Value
+
+A new reference to a Binary Search Tree derived object that can be used in a clone operation.
 
 ## See Also
 

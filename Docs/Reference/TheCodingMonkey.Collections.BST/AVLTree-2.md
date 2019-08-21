@@ -12,7 +12,6 @@ public class AVLTree<TKey, TValue> : BinarySearchTree<TKey, TValue>
 | name | description |
 | --- | --- |
 | [AVLTree](AVLTree-2/AVLTree.md)() | Default Constructor |
-| [AVLTree](AVLTree-2/AVLTree.md)(…) | AVL Tree Constructor |
 | override [Add](AVLTree-2/Add.md)(…) | Adds a node to the tree. |
 | override [Remove](AVLTree-2/Remove.md)(…) | Removes the node containing this data from the tree. |
 
@@ -20,7 +19,7 @@ public class AVLTree<TKey, TValue> : BinarySearchTree<TKey, TValue>
 
 | name | description |
 | --- | --- |
-| override [CreateInstance](AVLTree-2/CreateInstance.md)() |  |
+| override [CreateInstance](AVLTree-2/CreateInstance.md)() | Helper function used during Clone to create a new AVL Tree |
 
 ## See Also
 

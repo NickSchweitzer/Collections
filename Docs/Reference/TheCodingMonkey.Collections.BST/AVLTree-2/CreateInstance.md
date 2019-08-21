@@ -1,8 +1,14 @@
 # AVLTree&lt;TKey,TValue&gt;.CreateInstance method
 
+Helper function used during Clone to create a new AVL Tree
+
 ```csharp
 protected override BinarySearchTree<TKey, TValue> CreateInstance()
 ```
+
+## Return Value
+
+A new reference to an AVL Tree that can be used in a clone operation.
 
 ## See Also
 

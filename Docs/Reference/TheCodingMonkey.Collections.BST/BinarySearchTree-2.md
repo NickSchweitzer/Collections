@@ -12,7 +12,6 @@ public class BinarySearchTree<TKey, TValue> : ICloneable, IDictionary<TKey, TVal
 | name | description |
 | --- | --- |
 | [BinarySearchTree](BinarySearchTree-2/BinarySearchTree.md)() | Default Constructor. |
-| [BinarySearchTree](BinarySearchTree-2/BinarySearchTree.md)(…) | Binary Search Tree Constructor |
 | [Count](BinarySearchTree-2/Count.md) { get; protected set; } | Returns the number of items in the tree. |
 | [Empty](BinarySearchTree-2/Empty.md) { get; } | Returns true if the tree is empty. |
 | [IsFixedSize](BinarySearchTree-2/IsFixedSize.md) { get; } | Gets a value indicating whether the Skip List has a fixed size. |
@@ -22,23 +21,22 @@ public class BinarySearchTree<TKey, TValue> : ICloneable, IDictionary<TKey, TVal
 | [Keys](BinarySearchTree-2/Keys.md) { get; } | Gets an ICollection containing the keys of the Tree. |
 | [SyncRoot](BinarySearchTree-2/SyncRoot.md) { get; } | Gets an object that can be used to synchronize access to the ICollection. |
 | [Values](BinarySearchTree-2/Values.md) { get; } | Gets an ICollection containing the values of the Tree. |
-| [Add](BinarySearchTree-2/Add.md)(…) |  |
+| [Add](BinarySearchTree-2/Add.md)(…) | Adds a node to the tree. |
 | virtual [Add](BinarySearchTree-2/Add.md)(…) | Adds a node to the tree. |
 | virtual [Clear](BinarySearchTree-2/Clear.md)() | Removes all items from the Tree. |
 | virtual [Clone](BinarySearchTree-2/Clone.md)() | Makes a deep copy of this Tree. |
-| [Contains](BinarySearchTree-2/Contains.md)(…) |  |
+| [Contains](BinarySearchTree-2/Contains.md)(…) | Determines if the value is contained somewhere in the tree. |
 | virtual [ContainsKey](BinarySearchTree-2/ContainsKey.md)(…) | Determines if the value is contained somewhere in the tree. |
 | [CopyTo](BinarySearchTree-2/CopyTo.md)(…) | Copies the Tree elements to a one-dimensional Array instance at the specified index. |
-| [Remove](BinarySearchTree-2/Remove.md)(…) |  |
+| [Remove](BinarySearchTree-2/Remove.md)(…) | Removes the node containing this data from the tree. |
 | virtual [Remove](BinarySearchTree-2/Remove.md)(…) | Removes the node containing this data from the tree. |
-| [TryGetValue](BinarySearchTree-2/TryGetValue.md)(…) |  |
+| [TryGetValue](BinarySearchTree-2/TryGetValue.md)(…) | Attempts to retrieve the value for the given key. |
 
 ## Protected Members
 
 | name | description |
 | --- | --- |
-| [Compare](BinarySearchTree-2/Compare.md)(…) | Compares two objects using the IComparable interface if possible, then using one of the alternate comparison methods if needed. |
-| virtual [CreateInstance](BinarySearchTree-2/CreateInstance.md)() |  |
+| virtual [CreateInstance](BinarySearchTree-2/CreateInstance.md)() | Helper function used during Clone to create the correct instance of the specific Binary Search Tree implementation |
 | [Search](BinarySearchTree-2/Search.md)(…) | Recursive function used to find a given value in a subtree where current is the root node. |
 
 ## See Also

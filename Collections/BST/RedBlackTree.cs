@@ -11,12 +11,8 @@ namespace TheCodingMonkey.Collections.BST
         public RedBlackTree()
         { }
 
-        /// <summary>Red Black Tree Constructor</summary>
-        /// <param name="comparer">Comparison object to use for comparing dictionary keys.</param>
-        public RedBlackTree( IComparer comparer )
-        : base( comparer )
-        { }
-
+        /// <summary>Helper function used during Clone to create a new RedBlackTree</summary>
+        /// <returns>A new reference to a Red Black Tree that can be used in a clone operation.</returns>
         protected override BinarySearchTree<TKey, TValue> CreateInstance()
         {
             return new RedBlackTree<TKey, TValue>

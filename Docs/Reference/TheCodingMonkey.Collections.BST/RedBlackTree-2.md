@@ -12,7 +12,6 @@ public class RedBlackTree<TKey, TValue> : BinarySearchTree<TKey, TValue>
 | name | description |
 | --- | --- |
 | [RedBlackTree](RedBlackTree-2/RedBlackTree.md)() | Default Constructor |
-| [RedBlackTree](RedBlackTree-2/RedBlackTree.md)(…) | Red Black Tree Constructor |
 | override [Add](RedBlackTree-2/Add.md)(…) | Adds a node to the tree. |
 | override [Remove](RedBlackTree-2/Remove.md)(…) | Removes the node containing this data from the tree. |
 
@@ -20,7 +19,7 @@ public class RedBlackTree<TKey, TValue> : BinarySearchTree<TKey, TValue>
 
 | name | description |
 | --- | --- |
-| override [CreateInstance](RedBlackTree-2/CreateInstance.md)() |  |
+| override [CreateInstance](RedBlackTree-2/CreateInstance.md)() | Helper function used during Clone to create a new RedBlackTree |
 
 ## See Also
 

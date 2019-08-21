@@ -1,8 +1,22 @@
 # BinarySearchTree&lt;TKey,TValue&gt;.Add method (1 of 2)
 
+Adds a node to the tree.
+
 ```csharp
 public void Add(KeyValuePair<TKey, TValue> pair)
 ```
+
+| parameter | description |
+| --- | --- |
+| pair | KeyValuePair containing both the Key and Value to add together. |
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentNullException | Thrown if key is null. |
+| ArgumentException | Thrown if key already exists in the tree. |
+| InvalidCastException | Thrown if key is not of type IComparable. |
 
 ## See Also
 

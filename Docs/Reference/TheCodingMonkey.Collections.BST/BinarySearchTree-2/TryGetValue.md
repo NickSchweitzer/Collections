@@ -1,8 +1,19 @@
 # BinarySearchTree&lt;TKey,TValue&gt;.TryGetValue method
 
+Attempts to retrieve the value for the given key.
+
 ```csharp
 public bool TryGetValue(TKey key, out TValue value)
 ```
+
+| parameter | description |
+| --- | --- |
+| key | Key to search for in the binary search tree. |
+| value | Value that is present for the given key, ir present. Otherwise the default value for the object is returned. |
+
+## Return Value
+
+True if the key is present in the tree, false otherwise.
 
 ## See Also
 

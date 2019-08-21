@@ -1,29 +1,10 @@
-# RedBlackTree&lt;TKey,TValue&gt; constructor (1 of 2)
+# RedBlackTree&lt;TKey,TValue&gt; constructor
 
 Default Constructor
 
 ```csharp
 public RedBlackTree()
 ```
-
-## See Also
-
-* class [RedBlackTree&lt;TKey,TValue&gt;](../RedBlackTree-2.md)
-* namespace [TheCodingMonkey.Collections.BST](../../TheCodingMonkey.Collections.md)
-
----
-
-# RedBlackTree&lt;TKey,TValue&gt; constructor (2 of 2)
-
-Red Black Tree Constructor
-
-```csharp
-public RedBlackTree(IComparer comparer)
-```
-
-| parameter | description |
-| --- | --- |
-| comparer | Comparison object to use for comparing dictionary keys. |
 
 ## See Also
 

@@ -3,7 +3,7 @@
 Gets the key of the current dictionary entry.
 
 ```csharp
-public object Key { get; }
+public TKey Key { get; }
 ```
 
 ## See Also
