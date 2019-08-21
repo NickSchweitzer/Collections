@@ -5,11 +5,6 @@ namespace TheCodingMonkey.Collections.Lists
     /// <summary>Encapsulates a Linked List Node</summary>
 	public class Node<T>
 	{
-        /// <summary>Default Constructor</summary>
-        internal Node()
-        : this( default )
-		{ }
-
         internal Node( T value )
         : this( value, null )
         { }

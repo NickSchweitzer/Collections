@@ -17,14 +17,14 @@ namespace TheCodingMonkey.Collections.Tests
             return strArray;
         }
 
-        private void TestArguments( string[] strArgs )
+        private void TestArguments( string[] strArgs, bool caseSensitive )
         {
-            CmdArguments parsed = new CmdArguments( strArgs );
+            CmdArguments parsed = new CmdArguments(strArgs, caseSensitive);
             for ( int i = 1; i < 5; i++ )
             {
                 string key = $"Arg{i}";
-                Assert.IsTrue(parsed.ContainsKey(key));   // Match case
-                Assert.IsTrue(parsed.ContainsKey($"arg{i}"));    // Different case
+                Assert.IsTrue(parsed.ContainsKey(key));                              // Match case
+                Assert.AreNotEqual(caseSensitive, parsed.ContainsKey($"arg{i}"));    // Different case
 
                 string strValue = parsed[key];
                 string strExpected = ( i == 1 ) ? string.Empty : $"value{i}";
@@ -42,22 +42,25 @@ namespace TheCodingMonkey.Collections.Tests
         [TestMethod]
         public void DashesTest()
         {
-            string[] strDashes = BuildArgumentArray( "-" );
-            TestArguments( strDashes );
+            string[] args = BuildArgumentArray( "-" );
+            TestArguments(args, false);
+            TestArguments(args, true);
         }
 
         [TestMethod]
         public void DoubleDashTest()
         {
-            string[] strDashes = BuildArgumentArray( "--" );
-            TestArguments( strDashes );
+            string[] args = BuildArgumentArray( "--" );
+            TestArguments(args, false);
+            TestArguments(args, true);
         }
 
         [TestMethod]
         public void SlashTest()
         {
-            string[] strDashes = BuildArgumentArray( "/" );
-            TestArguments( strDashes );
+            string[] args = BuildArgumentArray( "/" );
+            TestArguments(args, false);
+            TestArguments(args, true);
         }
 
         [TestMethod]

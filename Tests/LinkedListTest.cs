@@ -441,7 +441,13 @@ namespace TheCodingMonkey.Collections.Tests
 
             Assert.AreEqual( 25, referenceList.Count );
 
-            LinkedList<int> cloned = MakeClone();
+            LinkedList<int> cloned = (LinkedList<int>)referenceList.Clone();
+
+            // Make sure of the basics... that they aren't pointing to the same references
+            Assert.IsFalse(object.ReferenceEquals(referenceList, cloned));
+
+            // Check that the sizes match... duh
+            Assert.AreEqual(referenceList.Count, cloned.Count);
 
             IEnumerator enumOrig  = referenceList.GetEnumerator();
             IEnumerator enumClone = cloned.GetEnumerator();
