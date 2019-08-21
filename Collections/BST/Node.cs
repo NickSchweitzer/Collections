@@ -41,9 +41,9 @@ namespace TheCodingMonkey.Collections.BST
 
         /// <summary>Performs a deep copy on this node, and any children if they exist.</summary>
         /// <returns>Copy of this node.</returns>
-        public virtual object Clone()
+        public object Clone()
         {
-            Node<TKey, TValue> clone = new Node<TKey, TValue>();
+            Node<TKey, TValue> clone = CloneInstance();
 
             // If the key is cloneable, then do a deep copy.  Otherwise do a shallow one
             if ( Key is ICloneable )
@@ -65,6 +65,13 @@ namespace TheCodingMonkey.Collections.BST
                 clone.Right = (Node<TKey, TValue>)Right.Clone();
 
             return clone;
+        }
+
+        /// <summary>Helper function used during Clone to create the correct instance of the specific Node implementation</summary>
+        /// <returns>A new reference to a Node derived object that can be used in a clone operation.</returns>
+        protected virtual Node<TKey, TValue> CloneInstance()
+        {
+            return new Node<TKey, TValue>();
         }
 
         /// <summary>Key used for comparison and lookup.</summary>

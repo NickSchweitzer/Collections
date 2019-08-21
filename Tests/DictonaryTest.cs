@@ -420,19 +420,26 @@ namespace TheCodingMonkey.Collections.Tests
         [TestMethod]
         public void CloneObjectTest()
         {
-            Assert.AreEqual( 0, m_Dictionary.Count );
+            Assert.AreEqual( 0, referenceDictionary.Count );
 
             for ( int i = 1; i <= 25; i++ )
-                m_Dictionary.Add( new CloneableInt( i ), new CloneableInt( i * 1000 ) );
+                referenceDictionary.Add( new CloneableInt( i ), new CloneableInt( i * 1000 ) );
 
-            Assert.AreEqual( 25, m_Dictionary.Count );
+            Assert.AreEqual( 25, referenceDictionary.Count );
 
-            IDictionary<int, int> cloned = MakeClone();
+            ICloneable cloneable = (ICloneable)referenceDictionary;
+            IDictionary<CloneableInt, CloneableInt> cloned = (IDictionary<CloneableInt, CloneableInt>)cloneable.Clone();
+
+            // Make sure of the basics... that they aren't pointing to the same references
+            Assert.IsFalse(object.ReferenceEquals(referenceDictionary, cloned));
+
+            // Check that the sizes match... duh
+            Assert.AreEqual(referenceDictionary.Count, cloned.Count);
 
             // Go through all the elements in the list and make sure they are equal
             // but that they point to different physical objects
-            IEnumerator<KeyValuePair<int, int>> enumOrig = m_Dictionary.GetEnumerator();
-            IEnumerator<KeyValuePair<int, int>> enumClone = cloned.GetEnumerator();
+            IEnumerator<KeyValuePair<CloneableInt, CloneableInt>> enumOrig = referenceDictionary.GetEnumerator();
+            IEnumerator<KeyValuePair<CloneableInt, CloneableInt>> enumClone = cloned.GetEnumerator();
 
             while ( enumOrig.MoveNext() && enumClone.MoveNext() )
             {

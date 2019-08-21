@@ -31,33 +31,14 @@ namespace TheCodingMonkey.Collections.BST
             // initialize the color based on the parent color
         }
 
-        /// <summary>Performs a deep copy on this node, and any children if they exist.</summary>
-        /// <returns>Copy of this node.</returns>
-        public override object Clone()
+        /// <summary>Helper function used during Clone to create the correct instance of the specific Node implementation</summary>
+        /// <returns>A new reference to a Node derived object that can be used in a clone operation.</returns>
+        protected override Node<TKey, TValue> CloneInstance()
         {
-            RedBlackNode<TKey, TValue> clone = new RedBlackNode<TKey, TValue>();
-            clone.Color = Color;
-
-            // If the key is cloneable, then do a deep copy.  Otherwise do a shallow one
-            if ( Key is ICloneable )
-                clone.Key = (TKey)((ICloneable)Key).Clone();
-            else
-                clone.Key = Key;
-
-            // If the data is cloneable, then do a deep copy.  Otherwise do a shallow one
-            if ( Value is ICloneable )
-                clone.Value = (TValue)((ICloneable)Value).Clone();
-            else
-                clone.Value = Value;
-
-            // Clone the children if they exist
-            if ( Left != null )
-                clone.Left = (RedBlackNode<TKey, TValue>)Left.Clone();
-        	
-            if ( Right != null )
-                clone.Right = (RedBlackNode<TKey, TValue>)Right.Clone();
-
-            return clone;
+            return new RedBlackNode<TKey, TValue>()
+            {
+                Color = this.Color
+            };
         }
 
         /// <summary>Adds the given key and value to the tree at the current node.</summary>

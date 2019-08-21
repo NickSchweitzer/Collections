@@ -14,9 +14,9 @@ namespace TheCodingMonkey.Collections.BST
 
         /// <summary>Makes a deep copy of this Tree.</summary>
         /// <returns>New instance of the tree.</returns>
-        public virtual object Clone()
+        public object Clone()
         {
-            var clone = CreateInstance();
+            var clone = CloneInstance();
 
             // Clone the root node... the clone will be called recursively through the tree
             if ( Root != null )
@@ -31,7 +31,7 @@ namespace TheCodingMonkey.Collections.BST
 
         /// <summary>Helper function used during Clone to create the correct instance of the specific Binary Search Tree implementation</summary>
         /// <returns>A new reference to a Binary Search Tree derived object that can be used in a clone operation.</returns>
-        protected virtual BinarySearchTree<TKey, TValue> CreateInstance()
+        protected virtual BinarySearchTree<TKey, TValue> CloneInstance()
         {
             return new BinarySearchTree<TKey, TValue>
             {

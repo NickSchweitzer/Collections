@@ -13,7 +13,7 @@ namespace TheCodingMonkey.Collections.BST
 
         /// <summary>Helper function used during Clone to create a new AVL Tree</summary>
         /// <returns>A new reference to an AVL Tree that can be used in a clone operation.</returns>
-        protected override BinarySearchTree<TKey, TValue> CreateInstance()
+        protected override BinarySearchTree<TKey, TValue> CloneInstance()
         {
             return new AVLTree<TKey, TValue>
             {
