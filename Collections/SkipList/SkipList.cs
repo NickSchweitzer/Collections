@@ -13,8 +13,6 @@ namespace TheCodingMonkey.Collections.SkipList
         private const double cProb = 0.5;
         private Random m_Random;
 
-        private IComparer m_pComparer = null;
-
         /// <summary>Default Constructor.</summary>
 		public SkipList()
         : this( -1 )
@@ -31,23 +29,6 @@ namespace TheCodingMonkey.Collections.SkipList
                 m_Random = new Random();
             else
                 m_Random = new Random( nRandomSeed );
-        }
-
-        /// <summary>SkipList Constructor.</summary>
-        /// <param name="comparer">Comparison object to use for comparing dictionary keys.</param>
-        public SkipList( IComparer comparer )
-        : this()
-        {
-            m_pComparer = comparer;
-        }
-
-        /// <summary>SkipList Constructor.</summary>
-        /// <param name="nRandomSeed">Random Number Seed for Height of SkipList Nodes.</param>
-        /// <param name="comparer">Comparison object to use for comparing dictionary keys.</param>
-        public SkipList( int nRandomSeed, IComparer comparer )
-        : this( nRandomSeed )
-        {
-            m_pComparer = comparer; 
         }
 
         /// <summary>Makes a deep copy of this SkipList.</summary>
@@ -247,14 +228,14 @@ namespace TheCodingMonkey.Collections.SkipList
             // First, determine the nodes that need to be updated at each level
             for ( i = Head.Height - 1; i >= 0; i-- )
             {
-                while ( ( current[i] != null ) && ( Compare( current[i].Key, key ) < 0 ) )
+                while ( ( current[i] != null ) && ( current[i].Key.CompareTo(key) < 0 ) )
                     current = current[i];
 
                 updates[i] = current;
             }
 
             // Cannot enter a duplicate
-            if ( ( current[0] != null ) && ( Compare( current[0].Key, key ) == 0 ) )
+            if ( ( current[0] != null ) && ( current[0].Key.CompareTo(key) == 0 ) )
                 throw new ArgumentException( "Attempting to add duplicate item to the list.  The items has a value of " + key.ToString(), "key" );
 
             // Create a new node
@@ -301,14 +282,14 @@ namespace TheCodingMonkey.Collections.SkipList
             // First, determine the nodes that need to be updated at each level
             for ( i = Head.Height - 1; i >= 0; i-- )
             {
-                while ( ( current[i] != null ) && ( Compare( current[i].Key, key ) < 0 ) )
+                while ( ( current[i] != null ) && ( current[i].Key.CompareTo(key) < 0 ) )
                     current = current[i];
 
                 updates[i] = current;
             }
 
             current = current[0];
-            if ( ( current != null ) && ( Compare( current.Key, key ) == 0 ) )
+            if ( ( current != null ) && ( current.Key.CompareTo(key) == 0 ) )
             {
                 Count--;
 
@@ -373,7 +354,7 @@ namespace TheCodingMonkey.Collections.SkipList
             {
                 while ( current[i] != null )
                 {
-                    int nResult = Compare( current[i].Key, key );
+                    int nResult = current[i].Key.CompareTo(key);
                     if ( nResult == 0 )
                         return current[i];
                     else if ( nResult < 0 )
@@ -385,17 +366,6 @@ namespace TheCodingMonkey.Collections.SkipList
 
             // if we reach here, we searched to the end of the list without finding the element
             return null;
-        }
-
-        private int Compare( object left, object right )
-        {
-            IComparable comp = left as IComparable;
-            if ( comp != null )
-                return comp.CompareTo( right );
-            else if ( m_pComparer != null )
-                return m_pComparer.Compare( left, right );
-            else
-                throw new ArgumentException( "Object does not implement IComparable, and no IComparer object was given" );
         }
 
         private delegate T Predicate<T>( Node<TKey, TValue> node );

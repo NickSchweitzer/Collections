@@ -1,4 +1,4 @@
-# SkipList&lt;TKey,TValue&gt; constructor (1 of 4)
+# SkipList&lt;TKey,TValue&gt; constructor (1 of 2)
 
 Default Constructor.
 
@@ -13,26 +13,7 @@ public SkipList()
 
 ---
 
-# SkipList&lt;TKey,TValue&gt; constructor (2 of 4)
-
-SkipList Constructor.
-
-```csharp
-public SkipList(IComparer comparer)
-```
-
-| parameter | description |
-| --- | --- |
-| comparer | Comparison object to use for comparing dictionary keys. |
-
-## See Also
-
-* class [SkipList&lt;TKey,TValue&gt;](../SkipList-2.md)
-* namespace [TheCodingMonkey.Collections.SkipList](../../TheCodingMonkey.Collections.md)
-
----
-
-# SkipList&lt;TKey,TValue&gt; constructor (3 of 4)
+# SkipList&lt;TKey,TValue&gt; constructor (2 of 2)
 
 SkipList Constructor.
 
@@ -43,26 +24,6 @@ public SkipList(int nRandomSeed)
 | parameter | description |
 | --- | --- |
 | nRandomSeed | Random Number Seed for Height of SkipList Nodes. |
-
-## See Also
-
-* class [SkipList&lt;TKey,TValue&gt;](../SkipList-2.md)
-* namespace [TheCodingMonkey.Collections.SkipList](../../TheCodingMonkey.Collections.md)
-
----
-
-# SkipList&lt;TKey,TValue&gt; constructor (4 of 4)
-
-SkipList Constructor.
-
-```csharp
-public SkipList(int nRandomSeed, IComparer comparer)
-```
-
-| parameter | description |
-| --- | --- |
-| nRandomSeed | Random Number Seed for Height of SkipList Nodes. |
-| comparer | Comparison object to use for comparing dictionary keys. |
 
 ## See Also
 

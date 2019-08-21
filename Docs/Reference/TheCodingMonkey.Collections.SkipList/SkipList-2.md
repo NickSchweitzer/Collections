@@ -12,7 +12,7 @@ public class SkipList<TKey, TValue> : ICloneable, IDictionary<TKey, TValue>
 | name | description |
 | --- | --- |
 | [SkipList](SkipList-2/SkipList.md)() | Default Constructor. |
-| [SkipList](SkipList-2/SkipList.md)(…) | SkipList Constructor. (3 constructors) |
+| [SkipList](SkipList-2/SkipList.md)(…) | SkipList Constructor. |
 | [Count](SkipList-2/Count.md) { get; } | Number of items in the SkipList. |
 | [Empty](SkipList-2/Empty.md) { get; } | Returns true if the list is empty. |
 | [IsFixedSize](SkipList-2/IsFixedSize.md) { get; } | Gets a value indicating whether the Skip List has a fixed size. |
