@@ -24,7 +24,7 @@ public class BinarySearchTree<TKey, TValue> : ICloneable, IDictionary<TKey, TVal
 | [Add](BinarySearchTree-2/Add.md)(…) | Adds a node to the tree. |
 | virtual [Add](BinarySearchTree-2/Add.md)(…) | Adds a node to the tree. |
 | virtual [Clear](BinarySearchTree-2/Clear.md)() | Removes all items from the Tree. |
-| virtual [Clone](BinarySearchTree-2/Clone.md)() | Makes a deep copy of this Tree. |
+| [Clone](BinarySearchTree-2/Clone.md)() | Makes a deep copy of this Tree. |
 | [Contains](BinarySearchTree-2/Contains.md)(…) | Determines if the value is contained somewhere in the tree. |
 | virtual [ContainsKey](BinarySearchTree-2/ContainsKey.md)(…) | Determines if the value is contained somewhere in the tree. |
 | [CopyTo](BinarySearchTree-2/CopyTo.md)(…) | Copies the Tree elements to a one-dimensional Array instance at the specified index. |
@@ -36,7 +36,7 @@ public class BinarySearchTree<TKey, TValue> : ICloneable, IDictionary<TKey, TVal
 
 | name | description |
 | --- | --- |
-| virtual [CreateInstance](BinarySearchTree-2/CreateInstance.md)() | Helper function used during Clone to create the correct instance of the specific Binary Search Tree implementation |
+| virtual [CloneInstance](BinarySearchTree-2/CloneInstance.md)() | Helper function used during Clone to create the correct instance of the specific Binary Search Tree implementation |
 | [Search](BinarySearchTree-2/Search.md)(…) | Recursive function used to find a given value in a subtree where current is the root node. |
 
 ## See Also

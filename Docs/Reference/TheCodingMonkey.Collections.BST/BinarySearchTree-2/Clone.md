@@ -3,7 +3,7 @@
 Makes a deep copy of this Tree.
 
 ```csharp
-public virtual object Clone()
+public object Clone()
 ```
 
 ## Return Value

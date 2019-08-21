@@ -3,7 +3,7 @@
 Performs a deep copy on this node, and any children if they exist.
 
 ```csharp
-public virtual object Clone()
+public object Clone()
 ```
 
 ## Return Value

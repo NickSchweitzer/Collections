@@ -13,7 +13,7 @@ public class Node<TKey, TValue> : ICloneable
 | --- | --- |
 | [Key](Node-2/Key.md) { get; set; } | Key used for comparison and lookup. |
 | [Value](Node-2/Value.md) { get; set; } | Data at this node location. |
-| virtual [Clone](Node-2/Clone.md)() | Performs a deep copy on this node, and any children if they exist. |
+| [Clone](Node-2/Clone.md)() | Performs a deep copy on this node, and any children if they exist. |
 | enum [CompType&lt;TKey,TValue&gt;](Node-2.CompType-2.md) | Comparison Type Enumeration |
 
 ## Protected Members
@@ -21,6 +21,7 @@ public class Node<TKey, TValue> : ICloneable
 | name | description |
 | --- | --- |
 | readonly [Nodes](Node-2/Nodes.md) | Array of node subtrees. |
+| virtual [CloneInstance](Node-2/CloneInstance.md)() | Helper function used during Clone to create the correct instance of the specific Node implementation |
 | [Compare](Node-2/Compare.md)(…) |  |
 | const [LEFT](Node-2/LEFT.md) | Array index for left subtree. |
 | const [RIGHT](Node-2/RIGHT.md) | Array index for right subtree. |

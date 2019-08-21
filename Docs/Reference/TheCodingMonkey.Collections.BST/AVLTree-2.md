@@ -19,7 +19,7 @@ public class AVLTree<TKey, TValue> : BinarySearchTree<TKey, TValue>
 
 | name | description |
 | --- | --- |
-| override [CreateInstance](AVLTree-2/CreateInstance.md)() | Helper function used during Clone to create a new AVL Tree |
+| override [CloneInstance](AVLTree-2/CloneInstance.md)() | Helper function used during Clone to create a new AVL Tree |
 
 ## See Also
 

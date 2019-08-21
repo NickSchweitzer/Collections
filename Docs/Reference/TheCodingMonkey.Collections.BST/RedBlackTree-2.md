@@ -19,7 +19,7 @@ public class RedBlackTree<TKey, TValue> : BinarySearchTree<TKey, TValue>
 
 | name | description |
 | --- | --- |
-| override [CreateInstance](RedBlackTree-2/CreateInstance.md)() | Helper function used during Clone to create a new RedBlackTree |
+| override [CloneInstance](RedBlackTree-2/CloneInstance.md)() | Helper function used during Clone to create a new RedBlackTree |
 
 ## See Also
 

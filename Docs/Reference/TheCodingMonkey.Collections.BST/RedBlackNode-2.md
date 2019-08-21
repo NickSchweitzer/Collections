@@ -12,9 +12,14 @@ public class RedBlackNode<TKey, TValue> : Node<TKey, TValue>
 | name | description |
 | --- | --- |
 | [Height](RedBlackNode-2/Height.md) { get; } | Height of this sub-tree. |
-| override [Clone](RedBlackNode-2/Clone.md)() | Performs a deep copy on this node, and any children if they exist. |
 | static [Add](RedBlackNode-2/Add.md)(…) | Adds the given key and value to the tree at the current node. |
 | static [Remove](RedBlackNode-2/Remove.md)(…) |  |
+
+## Protected Members
+
+| name | description |
+| --- | --- |
+| override [CloneInstance](RedBlackNode-2/CloneInstance.md)() | Helper function used during Clone to create the correct instance of the specific Node implementation |
 
 ## See Also
 

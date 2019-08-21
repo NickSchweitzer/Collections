@@ -13,7 +13,6 @@ public class AVLNode<TKey, TValue> : Node<TKey, TValue>
 | --- | --- |
 | [Balance](AVLNode-2/Balance.md) { get; set; } | Balance factor for this sub-tree. |
 | [Height](AVLNode-2/Height.md) { get; } | Height of this sub-tree. |
-| override [Clone](AVLNode-2/Clone.md)() | Performs a deep copy on this node, and any children if they exist. |
 | static [Add](AVLNode-2/Add.md)(…) | Adds the given key and value to the tree at the current node. |
 | static [Remove](AVLNode-2/Remove.md)(…) |  |
 
@@ -21,6 +20,7 @@ public class AVLNode<TKey, TValue> : Node<TKey, TValue>
 
 | name | description |
 | --- | --- |
+| override [CloneInstance](AVLNode-2/CloneInstance.md)() | Helper function used during Clone to create the correct instance of the specific Node implementation |
 | const [BALANCED](AVLNode-2/BALANCED.md) | Balance Constant: Tree is balanced. |
 | const [LEFT_HEAVY](AVLNode-2/LEFT_HEAVY.md) | Balance Constant: Left is Heavy. |
 | const [RIGHT_HEAVY](AVLNode-2/RIGHT_HEAVY.md) | Balance Constant: Right is Heavy. |
