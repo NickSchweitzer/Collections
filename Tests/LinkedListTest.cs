@@ -441,7 +441,7 @@ namespace TheCodingMonkey.Collections.Tests
 
             Assert.AreEqual( 25, referenceList.Count );
 
-            LinkedList<int> cloned = (LinkedList<int>)referenceList.Clone();
+            LinkedList<CloneableInt> cloned = (LinkedList<CloneableInt>)referenceList.Clone();
 
             // Make sure of the basics... that they aren't pointing to the same references
             Assert.IsFalse(object.ReferenceEquals(referenceList, cloned));
