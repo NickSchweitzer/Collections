@@ -20,6 +20,10 @@ namespace TheCodingMonkey.Collections.Tests
         private void TestArguments( string[] strArgs, bool caseSensitive )
         {
             CmdArguments parsed = new CmdArguments(strArgs, caseSensitive);
+            Assert.IsFalse(parsed.IsReadOnly);
+            var parsedKeys = parsed.Keys;
+            var parsedValues = parsed.Values;
+
             for ( int i = 1; i < 5; i++ )
             {
                 string key = $"Arg{i}";
@@ -30,8 +34,17 @@ namespace TheCodingMonkey.Collections.Tests
                 string strExpected = ( i == 1 ) ? string.Empty : $"value{i}";
                 Assert.AreEqual( strExpected, strValue );
 
+                Assert.IsTrue(parsedKeys.Contains(caseSensitive ? key : key.ToLower()));
+                Assert.IsTrue(parsedValues.Contains(strExpected));
+
+                string tryGet;
+                Assert.IsTrue(parsed.TryGetValue(key, out tryGet));
+                Assert.AreEqual(strExpected, tryGet);
                 WriteArgument( key, strValue );
             }
+
+            parsed.Clear();
+            Assert.AreEqual(0, parsed.Count);
         }
 
         private void WriteArgument( string strKey, string strValue )

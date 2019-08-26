@@ -66,6 +66,13 @@ namespace TheCodingMonkey.Collections.Tests
         }
 
         [TestMethod]
+        public void BasedPropertiesTest()
+        {
+            AddToEmpty(10);
+            Assert.IsFalse(m_Dictionary.IsReadOnly);
+        }
+
+        [TestMethod]
         public void AddItems()
         {
             AddToEmpty( 10 );

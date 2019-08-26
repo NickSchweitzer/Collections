@@ -69,15 +69,6 @@ namespace TheCodingMonkey.Collections.SkipList
         /// <summary>Number of items in the SkipList.</summary>
         public int Count { get; private set; }
 
-        /// <summary>Gets a value indicating whether access to the ICollection is synchronized.</summary>
-        public bool IsSynchronized => false;
-
-        /// <summary>Gets an object that can be used to synchronize access to the ICollection.</summary>
-        public object SyncRoot
-        {
-            get { return this; }
-        }
-
         /// <summary>Copies the Skip List elements to a one-dimensional Array instance at the specified index.</summary>
         /// <param name="array">The one dimensional Array to copy the elements to.</param>
         /// <param name="index">The zero-based index in array at which copying begins.</param>
@@ -103,9 +94,6 @@ namespace TheCodingMonkey.Collections.SkipList
             while ( enumerator.MoveNext() )
                 array.SetValue( enumerator.Current, index++ );
         }
-
-        /// <summary>Gets a value indicating whether the Skip List has a fixed size.</summary>
-        public bool IsFixedSize => false;
 
         /// <summary>Gets a value indicating whether the Skip List is read-only.</summary>
         public bool IsReadOnly => false;

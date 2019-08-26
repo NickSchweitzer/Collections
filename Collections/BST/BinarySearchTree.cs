@@ -54,12 +54,6 @@ namespace TheCodingMonkey.Collections.BST
         /// <summary>Returns the number of items in the tree.</summary>
         public int Count { get; protected set; } = 0;
 
-        /// <summary>Gets a value indicating whether access to the ICollection is synchronized.</summary>
-        public bool IsSynchronized => false;
-
-        /// <summary>Gets an object that can be used to synchronize access to the ICollection.</summary>
-        public object SyncRoot => this;
-
         /// <summary>Copies the Tree elements to a one-dimensional Array instance at the specified index.</summary>
         /// <param name="array">The one dimensional Array to copy the elements to.</param>
         /// <param name="index">The zero-based index in array at which copying begins.</param>
@@ -84,9 +78,6 @@ namespace TheCodingMonkey.Collections.BST
             InOrderFlatEnumerator<TKey, TValue> enumerator = new InOrderFlatEnumerator<TKey, TValue>( this );
             enumerator.Iterator.CopyTo( array, index );
         }
-
-        /// <summary>Gets a value indicating whether the Skip List has a fixed size.</summary>
-        public bool IsFixedSize => false;
 
         /// <summary>Gets a value indicating whether the Skip List is read-only.</summary>
         public bool IsReadOnly => false;
