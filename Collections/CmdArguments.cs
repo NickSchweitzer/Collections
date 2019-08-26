@@ -123,6 +123,9 @@ namespace TheCodingMonkey.Collections
         /// <returns>True if the command line switch is in the dictionary, False otherwise.</returns>
         public bool TryGetValue(string key, out string value)
         {
+            if (!CaseSensitive)
+                key = key.ToLower();
+
             return innerDictionary.TryGetValue(key, out value);
         }
 
@@ -152,7 +155,7 @@ namespace TheCodingMonkey.Collections
         /// <param name="arrayIndex">The zero-based index in array at which copying begins</param>
         public void CopyTo(KeyValuePair<string, string>[] array, int arrayIndex)
         {
-            ((IDictionary<string, string>)innerDictionary).CopyTo(array, arrayIndex);
+            innerDictionary.CopyTo(array, arrayIndex);
         }
 
         /// <summary>Removes the value with the specified command line switch from the Dictionary</summary>
