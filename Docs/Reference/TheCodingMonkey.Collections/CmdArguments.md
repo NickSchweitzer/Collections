@@ -3,7 +3,7 @@
 Class for performing verbose parsing of command line arguments. Accepts command line parameters in a variety of patterns, and puts the keys and values in a StringDictionary for easy use later.
 
 ```csharp
-public class CmdArguments : StringDictionary
+public class CmdArguments : IDictionary<string, string>
 ```
 
 ## Public Members
@@ -12,9 +12,19 @@ public class CmdArguments : StringDictionary
 | --- | --- |
 | [CmdArguments](CmdArguments/CmdArguments.md)(…) | Standard Constructor |
 | [CaseSensitive](CmdArguments/CaseSensitive.md) { get; } | Determines if command line argument keys are treated in a case senesitive manner. By default, the parser is case insensitive. |
-| override [Item](CmdArguments/Item.md) { get; set; } | Gets or sets the element with the specified key. |
-| override [Add](CmdArguments/Add.md)(…) | Adds a element with the provided key and value to the Dictionary, if they weren't part of the original command line argument string. |
-| override [ContainsKey](CmdArguments/ContainsKey.md)(…) | Determines whether the Command Line arguments contain an element with the specified key. The Key is case insensitive. |
+| [Count](CmdArguments/Count.md) { get; } | Retrieves the number of command line switches passed to the command line |
+| [IsReadOnly](CmdArguments/IsReadOnly.md) { get; } | Gets a value indicating whether the Dictionary is read-only |
+| [Item](CmdArguments/Item.md) { get; set; } | Gets or sets the element with the specified key. |
+| [Keys](CmdArguments/Keys.md) { get; } | Retrieves an ICollection of command line argument switches that were used |
+| [Values](CmdArguments/Values.md) { get; } | Retrieves an ICollection of the command line parameters passed to the switches. This is generally useless without knowing the corresponding keys. |
+| [Add](CmdArguments/Add.md)(…) | Adds a element with the provided key and value to the Dictionary, if they weren't part of the original command line argument string. (2 methods) |
+| [Clear](CmdArguments/Clear.md)() | Removes all items from the Collection |
+| [Contains](CmdArguments/Contains.md)(…) | Returns true if the Dictionary contains the command line switch specified in item |
+| [ContainsKey](CmdArguments/ContainsKey.md)(…) | Determines whether the Command Line arguments contain an element with the specified key. The Key is case insensitive. |
+| [CopyTo](CmdArguments/CopyTo.md)(…) | Copies the elements of the Dictionary to an array, starting at the specified array index. |
+| [GetEnumerator](CmdArguments/GetEnumerator.md)() | Returns an IDictionaryEnumerator for the IDictionary. |
+| [Remove](CmdArguments/Remove.md)(…) | Removes the value with the specified command line switch from the Dictionary (2 methods) |
+| [TryGetValue](CmdArguments/TryGetValue.md)(…) | Gets the value associated with the specified command line switch. |
 
 ## See Also
 

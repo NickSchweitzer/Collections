@@ -1,18 +1,18 @@
-# CmdArguments indexer
+# CmdArguments.Contains method
 
-Gets or sets the element with the specified key.
+Returns true if the Dictionary contains the command line switch specified in item
 
 ```csharp
-public string this[string key] { get; set; }
+public bool Contains(KeyValuePair<string, string> item)
 ```
 
 | parameter | description |
 | --- | --- |
-| key | Command line argument to get or set the value for |
+| item | Item to look for (only the Key is used) |
 
 ## Return Value
 
-The Value that was provided for this command line argument, or Empty String if there were none
+True if the Key is in the list, False otherwise.
 
 ## See Also
 

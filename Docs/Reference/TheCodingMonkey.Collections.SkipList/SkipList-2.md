@@ -15,12 +15,9 @@ public class SkipList<TKey, TValue> : ICloneable, IDictionary<TKey, TValue>
 | [SkipList](SkipList-2/SkipList.md)(…) | SkipList Constructor. |
 | [Count](SkipList-2/Count.md) { get; } | Number of items in the SkipList. |
 | [Empty](SkipList-2/Empty.md) { get; } | Returns true if the list is empty. |
-| [IsFixedSize](SkipList-2/IsFixedSize.md) { get; } | Gets a value indicating whether the Skip List has a fixed size. |
 | [IsReadOnly](SkipList-2/IsReadOnly.md) { get; } | Gets a value indicating whether the Skip List is read-only. |
-| [IsSynchronized](SkipList-2/IsSynchronized.md) { get; } | Gets a value indicating whether access to the ICollection is synchronized. |
 | [Item](SkipList-2/Item.md) { get; set; } | Indexer for the Skip List. |
 | [Keys](SkipList-2/Keys.md) { get; } | Gets an ICollection containing the keys of the Skip List. |
-| [SyncRoot](SkipList-2/SyncRoot.md) { get; } | Gets an object that can be used to synchronize access to the ICollection. |
 | [Values](SkipList-2/Values.md) { get; } | Gets an ICollection containing the values of the Skip List. |
 | [Add](SkipList-2/Add.md)(…) |  |
 | virtual [Add](SkipList-2/Add.md)(…) | Adds an item to the List |

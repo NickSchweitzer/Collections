@@ -14,12 +14,9 @@ public class BinarySearchTree<TKey, TValue> : ICloneable, IDictionary<TKey, TVal
 | [BinarySearchTree](BinarySearchTree-2/BinarySearchTree.md)() | Default Constructor. |
 | [Count](BinarySearchTree-2/Count.md) { get; protected set; } | Returns the number of items in the tree. |
 | [Empty](BinarySearchTree-2/Empty.md) { get; } | Returns true if the tree is empty. |
-| [IsFixedSize](BinarySearchTree-2/IsFixedSize.md) { get; } | Gets a value indicating whether the Skip List has a fixed size. |
 | [IsReadOnly](BinarySearchTree-2/IsReadOnly.md) { get; } | Gets a value indicating whether the Skip List is read-only. |
-| [IsSynchronized](BinarySearchTree-2/IsSynchronized.md) { get; } | Gets a value indicating whether access to the ICollection is synchronized. |
 | [Item](BinarySearchTree-2/Item.md) { get; set; } | Indexer for the Binary Search Tree. |
 | [Keys](BinarySearchTree-2/Keys.md) { get; } | Gets an ICollection containing the keys of the Tree. |
-| [SyncRoot](BinarySearchTree-2/SyncRoot.md) { get; } | Gets an object that can be used to synchronize access to the ICollection. |
 | [Values](BinarySearchTree-2/Values.md) { get; } | Gets an ICollection containing the values of the Tree. |
 | [Add](BinarySearchTree-2/Add.md)(…) | Adds a node to the tree. |
 | virtual [Add](BinarySearchTree-2/Add.md)(…) | Adds a node to the tree. |

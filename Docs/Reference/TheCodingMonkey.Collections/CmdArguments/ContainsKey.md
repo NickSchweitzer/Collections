@@ -3,7 +3,7 @@
 Determines whether the Command Line arguments contain an element with the specified key. The Key is case insensitive.
 
 ```csharp
-public override bool ContainsKey(string key)
+public bool ContainsKey(string key)
 ```
 
 | parameter | description |

@@ -1,9 +1,28 @@
-# CmdArguments.Add method
+# CmdArguments.Add method (1 of 2)
 
 Adds a element with the provided key and value to the Dictionary, if they weren't part of the original command line argument string.
 
 ```csharp
-public override void Add(string key, string value)
+public void Add(KeyValuePair<string, string> item)
+```
+
+| parameter | description |
+| --- | --- |
+| item | The switch and corresponding value to add. This Key is automatically made lower case if [`CaseSensitive`](CaseSensitive.md) is False. |
+
+## See Also
+
+* class [CmdArguments](../CmdArguments.md)
+* namespace [TheCodingMonkey.Collections](../../TheCodingMonkey.Collections.md)
+
+---
+
+# CmdArguments.Add method (2 of 2)
+
+Adds a element with the provided key and value to the Dictionary, if they weren't part of the original command line argument string.
+
+```csharp
+public void Add(string key, string value)
 ```
 
 | parameter | description |
