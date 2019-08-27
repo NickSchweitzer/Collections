@@ -13,5 +13,14 @@ namespace TheCodingMonkey.Collections.Tests
             m_Dictionary = new BinarySearchTree<int, int>();
             referenceDictionary = new BinarySearchTree<CloneableInt, CloneableInt>();
         }
+
+        [TestMethod]
+        public void TestEmpty()
+        {
+            BinarySearchTree<int, int> bst = (BinarySearchTree<int, int>)m_Dictionary;
+            Assert.IsTrue(bst.Empty);
+            AddToEmpty(10);
+            Assert.IsFalse(bst.Empty);
+        }
     }
 }

@@ -5,7 +5,7 @@ using TheCodingMonkey.Collections.BST;
 namespace TheCodingMonkey.Collections.Tests
 {
     [TestClass, TestCategory("Red Black")]
-    public class RedBlackTest : DictionaryTest
+    public class RedBlackTest : BSTTest
     {
         [TestInitialize]
         public override void Init()

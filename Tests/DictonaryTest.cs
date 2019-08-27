@@ -117,6 +117,18 @@ namespace TheCodingMonkey.Collections.Tests
         }
 
         [TestMethod]
+        public void AddPairsCheckValues()
+        {
+            Assert.AreEqual(0, m_Dictionary.Count);
+
+            for (int i = 1; i <= 10; i++)
+                m_Dictionary.Add(new KeyValuePair<int, int>(i, 500 + i));
+
+            foreach (int v in m_Dictionary.Values)
+                Assert.IsTrue(v > 500 && v <= 510);
+        }
+
+        [TestMethod]
         public void AddRandomItems()
         {
             AddRandomToEmpty( 1000 );
@@ -154,7 +166,7 @@ namespace TheCodingMonkey.Collections.Tests
         {
             // First try to remove from an empty list
             Assert.AreEqual( 0, m_Dictionary.Count );
-            m_Dictionary.Remove( 1 );
+            Assert.IsFalse(m_Dictionary.Remove(1));
 
             // Now add some items
             for ( int i = 1; i <= 10; i++ )
@@ -163,7 +175,8 @@ namespace TheCodingMonkey.Collections.Tests
             Assert.AreEqual( 10, m_Dictionary.Count );
 
             // Try to remove an item that's not in the list
-            m_Dictionary.Remove( 11 );
+            KeyValuePair<int, int> pair = new KeyValuePair<int, int>(11, 11);
+            Assert.IsFalse(m_Dictionary.Remove(pair));
             Assert.AreEqual( 10, m_Dictionary.Count );
         }
 
@@ -209,6 +222,9 @@ namespace TheCodingMonkey.Collections.Tests
 
                 int wontGet;
                 Assert.IsFalse(m_Dictionary.TryGetValue(i * 1000, out wontGet));
+
+                KeyValuePair<int, int> pair = new KeyValuePair<int, int>(i, i * 1000);
+                Assert.IsTrue(m_Dictionary.Contains(pair));
             }
         }
 

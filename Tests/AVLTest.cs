@@ -5,7 +5,7 @@ using TheCodingMonkey.Collections.BST;
 namespace TheCodingMonkey.Collections.Tests
 {
     [TestClass, TestCategory("AVL")]
-    public class AVLTest : DictionaryTest
+    public class AVLTest : BSTTest
     {
         [TestInitialize]
         public override void Init()
