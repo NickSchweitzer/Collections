@@ -55,12 +55,6 @@ namespace TheCodingMonkey.Collections.Lists
         /// <summary>Returns the number of items in the list.</summary>
         public int Count { get; private set; } = 0;
 
-        /// <summary>Gets a value indicating whether access to the ICollection is synchronized.</summary>
-        public bool IsSynchronized => false;
-
-        /// <summary>Gets an object that can be used to synchronize access to the ICollection.</summary>
-        public object SyncRoot => this;
-
         /// <summary>Copies the List elements to a one-dimensional Array instance at the specified index.</summary>
         /// <param name="array">The one dimensional Array to copy the elements to.</param>
         /// <param name="index">The zero-based index in array at which copying begins.</param>
@@ -84,9 +78,6 @@ namespace TheCodingMonkey.Collections.Lists
             while ( enumerator.MoveNext() )
                 array.SetValue( enumerator.Current, index++ );
         }
-
-        /// <summary>Gets a value indicating whether the List has a fixed size.</summary>
-        public bool IsFixedSize => false;
 
         /// <summary>Gets a value indicating whether the List is read-only.</summary>
         public bool IsReadOnly => false;

@@ -17,6 +17,13 @@ namespace TheCodingMonkey.Collections.Tests
             testList = new LinkedList<int>();
         }
 
+        [TestMethod]
+        public void BasedPropertiesTest()
+        {
+            AddToEmpty(10);
+            Assert.IsFalse(testList.IsReadOnly);
+        }
+
         protected void AddToEmpty( int nCount )
         {
             AddToEmpty( nCount, false );
