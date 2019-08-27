@@ -20,6 +20,7 @@ namespace TheCodingMonkey.Collections.Tests
         private void TestArguments( string[] strArgs, bool caseSensitive )
         {
             CmdArguments parsed = new CmdArguments(strArgs, caseSensitive);
+            Assert.AreEqual(4, parsed.Count);
             Assert.IsFalse(parsed.IsReadOnly);
             var parsedKeys = parsed.Keys;
             var parsedValues = parsed.Values;
