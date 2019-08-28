@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TheCodingMonkey.Collections.BST;
 
@@ -33,7 +32,6 @@ namespace TheCodingMonkey.Collections.Tests
             AssertTraversalOrder(new PreOrderFlatEnumerator<int, int>(bst), preOrderItems);
             AssertTraversalOrder(new PostOrderFlatEnumerator<int, int>(bst), postOrderItems);
             AssertTraversalOrder(new LevelOrderFlatEnumerator<int, int>(bst), levelOrderItems);
-
         }
 
         private void AssertTraversalOrder(FlatEnumerator<int, int> enumerator, int[] expectedItems)

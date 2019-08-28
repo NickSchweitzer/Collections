@@ -28,7 +28,11 @@ namespace TheCodingMonkey.Collections.Lists
         /// <summary>Moves to the previous element in the list</summary>
         public override bool MovePrevious()
         {
-            CurrentNode = CurrentNode.Previous;
+            if (!isReset && CurrentNode == null)    // At the end
+                CurrentNode = linkedList.Tail;
+            else
+                CurrentNode = CurrentNode.Previous;
+
             return (CurrentNode != null);
         }
     }

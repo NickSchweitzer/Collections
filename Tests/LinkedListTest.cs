@@ -473,5 +473,51 @@ namespace TheCodingMonkey.Collections.Tests
             Assert.AreNotEqual(cloned, testList);
             Assert.AreEqual(cloned.Count, testList.Count);
         }
+
+        [TestMethod]
+        public void BiDirEnumeratorTest()
+        {
+            Assert.IsTrue(testList.Empty);
+            AddToEmpty(10);
+
+            int i = 1;
+            var forward = (IBiDirEnumerator<int>)testList.GetEnumerator();
+            while (forward.MoveNext())
+            {
+                Assert.AreEqual(i, forward.Current);
+                i++;
+            }
+
+            while (forward.MovePrevious())
+            {
+                i--;
+                Assert.AreEqual(i, forward.Current);
+            }
+
+            Assert.AreEqual(1, i);  // Ran through all the scenarios
+        }
+
+        [TestMethod]
+        public void ReverseEnumeratorTest()
+        {
+            Assert.IsTrue(testList.Empty);
+            AddToEmpty(10);
+
+            int i = 10;
+            var reverse = new ReverseEnumerator<int>(testList);
+            while (reverse.MoveNext())
+            {
+                Assert.AreEqual(i, reverse.Current);
+                i--;
+            }
+
+            while (reverse.MovePrevious())
+            {
+                i++;
+                Assert.AreEqual(i, reverse.Current);
+            }
+
+            Assert.AreEqual(10, i);  // Ran through all the scenarios
+        }
     }
 }
