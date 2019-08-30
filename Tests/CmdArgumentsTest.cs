@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TheCodingMonkey.Collections.Tests
@@ -44,6 +46,20 @@ namespace TheCodingMonkey.Collections.Tests
                 WriteArgument( key, strValue );
             }
 
+            if (caseSensitive)
+            {
+                foreach (KeyValuePair<string, string> pair in parsed)
+                {
+                    Assert.IsTrue(strArgs.Where(x => x.Contains(pair.Key)).Any());
+                    Assert.IsTrue(strArgs.Where(x => x.Contains(pair.Value)).Any());
+                }
+            }
+
+            KeyValuePair<string, string>[] copyArray = new KeyValuePair<string, string>[parsed.Count];
+            parsed.CopyTo(copyArray, 0);
+            foreach (var copyItem in copyArray)
+                Assert.IsTrue(parsed.Contains(copyItem));
+
             parsed.Clear();
             Assert.AreEqual(0, parsed.Count);
         }
@@ -88,6 +104,26 @@ namespace TheCodingMonkey.Collections.Tests
 
             Assert.AreEqual( strValue, parsedArgs[strKey] );
             WriteArgument( strKey, strValue );
+        }
+
+        [TestMethod]
+        public void AddRemoveTest()
+        {
+            // Test an empty command line list - Case Insenstive
+            CmdArguments parsed = new CmdArguments(new string[0]);
+            parsed.Add(new KeyValuePair<string, string>("Arg1", "Value1"));
+            Assert.IsTrue(parsed.ContainsKey("arg1"));
+            Assert.IsTrue(parsed.Remove("arg1"));
+            Assert.IsFalse(parsed.ContainsKey("arg1"));
+
+            // Test an empty command line list - Case Senstive
+            parsed = new CmdArguments(new string[0], true);
+            parsed.Add(new KeyValuePair<string, string>("Arg1", "Value1"));
+            Assert.IsTrue(parsed.ContainsKey("Arg1"));
+            Assert.IsFalse(parsed.ContainsKey("arg1"));
+            Assert.IsFalse(parsed.Remove("arg1"));
+            Assert.IsTrue(parsed.Remove(new KeyValuePair<string, string>("Arg1", "Value1")));
+            Assert.IsFalse(parsed.ContainsKey("Arg1"));
         }
     }
 }
