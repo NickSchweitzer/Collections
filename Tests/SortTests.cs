@@ -7,12 +7,24 @@ namespace TheCodingMonkey.Collections.Tests
     [TestClass, TestCategory("Sort")]
     public class SortTests
     {
-        protected int[] unsorted = { 72, 12, 6, 33, 81, 97, 37, 59, 52, 1, 20 };
+        protected int[] unsorted;
+
+        [TestInitialize]
+        public void Init()
+        {
+            unsorted =  new int[] { 72, 12, 6, 33, 81, 97, 37, 59, 52, 1, 20 };
+        }
 
         [TestMethod]
         public void QuickSortTest()
         {
             TestSort(new QuickSort<int>());
+        }
+
+        [TestMethod]
+        public void BubbleSortTest()
+        {
+            TestSort(new BubbleSort<int>());
         }
 
         private void TestSort(ISort<int> sorter)
