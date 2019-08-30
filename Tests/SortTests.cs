@@ -27,6 +27,12 @@ namespace TheCodingMonkey.Collections.Tests
             TestSort(new BubbleSort<int>());
         }
 
+        [TestMethod]
+        public void HeapSortTest()
+        {
+            TestSort(new HeapSort<int>());
+        }
+
         private void TestSort(ISort<int> sorter)
         {
             sorter.Sort(unsorted);

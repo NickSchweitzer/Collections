@@ -70,6 +70,7 @@ implements [`IComparable`](https://docs.microsoft.com/en-us/dotnet/api/system.ic
 
 * [Quick Sort](./Reference/TheCodingMonkey.Collections.Sort/QuickSort-1.md)
 * [Bubble Sort](./Reference/TheCodingMonkey.Collections.Sort/BubbleSort-1.md)
+* [Heap Sort](./Reference/TheCodingMonkey.Collections.Sort/HeapSort-1.md)
 
 # Iterators
 

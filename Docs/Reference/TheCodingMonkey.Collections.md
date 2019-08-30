@@ -62,6 +62,7 @@
 | public type | description |
 | --- | --- |
 | class [BubbleSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/BubbleSort-1.md) | Implementation of a Bubble sort (sinking sort) for IList |
+| class [HeapSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/HeapSort-1.md) | Implementation of a Bubble sort (sinking sort) for IList |
 | interface [ISort&lt;T&gt;](TheCodingMonkey.Collections.Sort/ISort-1.md) | Generic interface for all algorithms in this collection that perform an in-place sort of an IList |
 | class [QuickSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/QuickSort-1.md) | Implementation of a Quicksort (partition-exchange sort) for IList |
 
