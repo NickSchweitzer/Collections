@@ -14,11 +14,8 @@ public class LinkedList<T> : ICloneable, IList<T>
 | [Count](LinkedList-1/Count.md) { get; } | Returns the number of items in the list. |
 | [Empty](LinkedList-1/Empty.md) { get; } | Returns true if the list is empty. |
 | [Head](LinkedList-1/Head.md) { get; set; } | Retrieves the first item in the list. |
-| [IsFixedSize](LinkedList-1/IsFixedSize.md) { get; } | Gets a value indicating whether the List has a fixed size. |
 | [IsReadOnly](LinkedList-1/IsReadOnly.md) { get; } | Gets a value indicating whether the List is read-only. |
-| [IsSynchronized](LinkedList-1/IsSynchronized.md) { get; } | Gets a value indicating whether access to the ICollection is synchronized. |
 | [Item](LinkedList-1/Item.md) { get; set; } | Gets or sets the element at the specified index. |
-| [SyncRoot](LinkedList-1/SyncRoot.md) { get; } | Gets an object that can be used to synchronize access to the ICollection. |
 | [Tail](LinkedList-1/Tail.md) { get; set; } | Retrieves the last item in the list. |
 | [Add](LinkedList-1/Add.md)(…) | Adds a new value onto the end of the list. |
 | [Clear](LinkedList-1/Clear.md)() | Removes all items from the list. |

@@ -3,9 +3,15 @@ using System.Collections.Generic;
 
 namespace TheCodingMonkey.Collections.Sort
 {
+    /// <summary>Implementation of a Quicksort (partition-exchange sort) for IList</summary>
+    /// <remarks>More information about QuickSort can be found at https://en.wikipedia.org/wiki/Quicksort or 
+    /// https://exceptionnotfound.net/quick-sort-csharp-the-sorting-algorithm-family-reunion/ </remarks>
+    /// <typeparam name="T">T must implement IComparable</typeparam>
     public class QuickSort<T> : ISort<T>
         where T : IComparable
     {
+        /// <summary>Performs an in-place sort of the collection.</summary>
+        /// <param name="collection">IList to sort</param>
         public void Sort(IList<T> collection)
         {
             Sort(collection, 0, collection.Count - 1);

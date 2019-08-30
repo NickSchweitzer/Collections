@@ -4,9 +4,15 @@ using System.Text;
 
 namespace TheCodingMonkey.Collections.Sort
 {
+    /// <summary>Implementation of a Bubble sort (sinking sort) for IList</summary>
+    /// <remarks>More information about QuickSort can be found at https://en.wikipedia.org/wiki/Bubble_sort or 
+    /// https://exceptionnotfound.net/bubble-sort-csharp-the-sorting-algorithm-family-reunion/ </remarks>
+    /// <typeparam name="T">T must implement IComparable</typeparam>
     public class BubbleSort<T> : ISort<T>
         where T : IComparable
     {
+        /// <summary>Performs an in-place sort of the collection.</summary>
+        /// <param name="collection">IList to sort</param>
         public void Sort(IList<T> collection)
         {
             int length = collection.Count;
