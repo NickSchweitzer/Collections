@@ -63,6 +63,14 @@ Examples: `-param1 value1 --param2 /param3:"Test-:-work" /param4=happy -param5 '
 
 [More Information](./CmdArguments.md)
 
+# Sorting Algorithms
+
+Implemented several popular sorting algorithms that all operate generically on any collection wich implements [`IList<T>`](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1) where `T` 
+implements [`IComparable`](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable).
+
+* [Quick Sort](./Reference/TheCodingMonkey.Collections.Sort/QuickSort-1.md)
+* [Bubble Sort](./Reference/TheCodingMonkey.Collections.Sort/BubbleSort-1.md)
+
 # Iterators
 
 # Library References

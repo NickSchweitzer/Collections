@@ -20,7 +20,7 @@ public class BubbleSort<T> : ISort<T>
 
 ## Remarks
 
-More information about QuickSort can be found at https://en.wikipedia.org/wiki/Bubble_sort or https://exceptionnotfound.net/bubble-sort-csharp-the-sorting-algorithm-family-reunion/
+More information about QuickSort can be found at [Wikipedia](https://en.wikipedia.org/wiki/Bubble_sort) or [this blog post](https://exceptionnotfound.net/bubble-sort-csharp-the-sorting-algorithm-family-reunion/).
 
 ## See Also
 

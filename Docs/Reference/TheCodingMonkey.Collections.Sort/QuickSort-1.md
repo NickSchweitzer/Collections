@@ -20,7 +20,7 @@ public class QuickSort<T> : ISort<T>
 
 ## Remarks
 
-More information about QuickSort can be found at https://en.wikipedia.org/wiki/Quicksort or https://exceptionnotfound.net/quick-sort-csharp-the-sorting-algorithm-family-reunion/
+More information about QuickSort can be found at [Wikipedia](https://en.wikipedia.org/wiki/Quicksort) or [this blog post](https://exceptionnotfound.net/quick-sort-csharp-the-sorting-algorithm-family-reunion/).
 
 ## See Also
 
