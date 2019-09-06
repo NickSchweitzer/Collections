@@ -61,8 +61,10 @@
 
 | public type | description |
 | --- | --- |
+| class [BitonicMergeSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/BitonicMergeSort-1.md) | Implementation of a Bitonic Merge Sort (partition-exchange sort) for IList |
 | class [BubbleSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/BubbleSort-1.md) | Implementation of a Bubble sort (sinking sort) for IList |
 | class [CombSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/CombSort-1.md) | Implementation of a Comb Sort for IList |
+| enum [Direction](TheCodingMonkey.Collections.Sort/Direction.md) | Defines the direction of a sort |
 | class [HeapSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/HeapSort-1.md) | Implementation of a Bubble sort (sinking sort) for IList |
 | interface [ISort&lt;T&gt;](TheCodingMonkey.Collections.Sort/ISort-1.md) | Generic interface for all algorithms in this collection that perform an in-place sort of an IList |
 | class [OddEvenSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/OddEvenSort-1.md) | Implementation of an Odd Even sort (brick sort) for IList |
