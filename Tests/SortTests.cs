@@ -56,6 +56,12 @@ namespace TheCodingMonkey.Collections.Tests
         }
 
         [TestMethod]
+        public void InsertionSortTest()
+        {
+            TestSort(new InsertionSort<int>());
+        }
+
+        [TestMethod]
         public void BitonicMergeSortTest()
         {
             TestSort(new BitonicMergeSort<int>(), unsorted2);

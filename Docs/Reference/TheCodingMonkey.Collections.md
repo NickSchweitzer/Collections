@@ -66,6 +66,7 @@
 | class [CombSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/CombSort-1.md) | Implementation of a Comb Sort for IList |
 | enum [Direction](TheCodingMonkey.Collections.Sort/Direction.md) | Defines the direction of a sort |
 | class [HeapSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/HeapSort-1.md) | Implementation of a Bubble sort (sinking sort) for IList |
+| class [InsertionSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/InsertionSort-1.md) | Implementation of an Insertion sort (sinking sort) for IList |
 | interface [ISort&lt;T&gt;](TheCodingMonkey.Collections.Sort/ISort-1.md) | Generic interface for all algorithms in this collection that perform an in-place sort of an IList |
 | class [OddEvenSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/OddEvenSort-1.md) | Implementation of an Odd Even sort (brick sort) for IList |
 | class [QuickSort&lt;T&gt;](TheCodingMonkey.Collections.Sort/QuickSort-1.md) | Implementation of a Quicksort (partition-exchange sort) for IList |

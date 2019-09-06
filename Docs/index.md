@@ -75,6 +75,7 @@ implements [`IComparable`](https://docs.microsoft.com/en-us/dotnet/api/system.ic
 * [Comb Sort](./Reference/TheCodingMonkey.Collections.Sort/CombSort-1.md)
 * [Shell Sort](./Reference/TheCodingMonkey.Collections.Sort/ShellSort-1.md)
 * [Bitonic Merge Sort](./Reference/TheCodingMonkey.Collections.Sort/BitonicMergeSort-1.md)
+* [Insertion Sort](./Reference/TheCodingMonkey.Collections.Sort/InsertionSort-1.md)
 
 # Iterators
 
