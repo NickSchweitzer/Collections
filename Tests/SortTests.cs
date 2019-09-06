@@ -33,6 +33,12 @@ namespace TheCodingMonkey.Collections.Tests
             TestSort(new HeapSort<int>());
         }
 
+        [TestMethod]
+        public void OddEvenTest()
+        {
+            TestSort(new OddEvenSort<int>());
+        }
+
         private void TestSort(ISort<int> sorter)
         {
             sorter.Sort(unsorted);

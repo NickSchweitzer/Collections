@@ -19,7 +19,7 @@ all operations are therefore O(log n) with a worst case of O(n).
 
 ### [Red Black Tree](./Reference/TheCodingMonkey.Collections.BST/RedBlackTree-2.md)
 
-A Red Black Tree is a type of self balancing binary search tree. Each node tracks a color enumeration, and therfore stores slightly more information about the node
+A Red Black Tree is a type of self balancing binary search tree. Each node tracks a color enumeration, and therefore stores slightly more information about the node
 than a standard binary search tree. Because it is self balancing, all operations are O(log n).
 
 [More information](https://en.wikipedia.org/wiki/Red–black_tree).
@@ -71,6 +71,7 @@ implements [`IComparable`](https://docs.microsoft.com/en-us/dotnet/api/system.ic
 * [Quick Sort](./Reference/TheCodingMonkey.Collections.Sort/QuickSort-1.md)
 * [Bubble Sort](./Reference/TheCodingMonkey.Collections.Sort/BubbleSort-1.md)
 * [Heap Sort](./Reference/TheCodingMonkey.Collections.Sort/HeapSort-1.md)
+* [Odd Even Sort](./Reference/TheCodingMonkey.Collections.Sort/OddEvenSort-1.md)
 
 # Iterators
 
