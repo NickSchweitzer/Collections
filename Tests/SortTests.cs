@@ -34,9 +34,15 @@ namespace TheCodingMonkey.Collections.Tests
         }
 
         [TestMethod]
-        public void OddEvenTest()
+        public void OddEvenSortTest()
         {
             TestSort(new OddEvenSort<int>());
+        }
+
+        [TestMethod]
+        public void CombSortTest()
+        {
+            TestSort(new CombSort<int>());
         }
 
         private void TestSort(ISort<int> sorter)
