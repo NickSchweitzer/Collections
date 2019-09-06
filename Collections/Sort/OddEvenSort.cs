@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace TheCodingMonkey.Collections.Sort
 {
     /// <summary>Implementation of an Odd Even sort (brick sort) for IList</summary>
-    /// <remarks>More information about QuickSort can be found at <a href="https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort">Wikipedia</a> or 
+    /// <remarks>More information about Odd Even Sort can be found at <a href="https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort">Wikipedia</a> or 
     /// <a href="https://exceptionnotfound.net/odd-even-sort-csharp-the-sorting-algorithm-family-reunion/">this blog post</a>.</remarks>
     /// <typeparam name="T">T must implement IComparable</typeparam>
     public class OddEvenSort<T> : ISort<T>

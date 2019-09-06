@@ -73,6 +73,7 @@ implements [`IComparable`](https://docs.microsoft.com/en-us/dotnet/api/system.ic
 * [Heap Sort](./Reference/TheCodingMonkey.Collections.Sort/HeapSort-1.md)
 * [Odd Even Sort](./Reference/TheCodingMonkey.Collections.Sort/OddEvenSort-1.md)
 * [Comb Sort](./Reference/TheCodingMonkey.Collections.Sort/CombSort-1.md)
+* [Shell Sort](./Reference/TheCodingMonkey.Collections.Sort/ShellSort-1.md)
 
 # Iterators
 

@@ -20,7 +20,7 @@ public class OddEvenSort<T> : ISort<T>
 
 ## Remarks
 
-More information about QuickSort can be found at [Wikipedia](https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort) or [this blog post](https://exceptionnotfound.net/odd-even-sort-csharp-the-sorting-algorithm-family-reunion/).
+More information about Odd Even Sort can be found at [Wikipedia](https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort) or [this blog post](https://exceptionnotfound.net/odd-even-sort-csharp-the-sorting-algorithm-family-reunion/).
 
 ## See Also
 

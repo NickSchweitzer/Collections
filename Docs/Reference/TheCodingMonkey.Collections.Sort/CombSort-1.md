@@ -20,7 +20,7 @@ public class CombSort<T> : ISort<T>
 
 ## Remarks
 
-More information about QuickSort can be found at [Wikipedia](https://en.wikipedia.org/wiki/Comb_sort) or [this blog post](https://exceptionnotfound.net/comb-sort-csharp-the-sorting-algorithm-family-reunion/).
+More information about Comb Sort can be found at [Wikipedia](https://en.wikipedia.org/wiki/Comb_sort) or [this blog post](https://exceptionnotfound.net/comb-sort-csharp-the-sorting-algorithm-family-reunion/).
 
 ## See Also
 

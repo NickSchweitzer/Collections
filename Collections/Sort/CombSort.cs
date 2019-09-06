@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace TheCodingMonkey.Collections.Sort
 {
     /// <summary>Implementation of a Comb Sort for IList</summary>
-    /// <remarks>More information about QuickSort can be found at <a href="https://en.wikipedia.org/wiki/Comb_sort">Wikipedia</a> or 
+    /// <remarks>More information about Comb Sort can be found at <a href="https://en.wikipedia.org/wiki/Comb_sort">Wikipedia</a> or 
     /// <a href="https://exceptionnotfound.net/comb-sort-csharp-the-sorting-algorithm-family-reunion/">this blog post</a>.</remarks>
     /// <typeparam name="T">T must implement IComparable</typeparam>
     public class CombSort<T> : ISort<T>

@@ -45,6 +45,12 @@ namespace TheCodingMonkey.Collections.Tests
             TestSort(new CombSort<int>());
         }
 
+        [TestMethod]
+        public void ShellSortTest()
+        {
+            TestSort(new ShellSort<int>());
+        }
+
         private void TestSort(ISort<int> sorter)
         {
             sorter.Sort(unsorted);
