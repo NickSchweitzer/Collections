@@ -1,6 +1,7 @@
 ﻿using System;
 using TheCodingMonkey.Collections.Sort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace TheCodingMonkey.Collections.Tests
 {
@@ -22,69 +23,92 @@ namespace TheCodingMonkey.Collections.Tests
         [TestMethod]
         public void QuickSortTest()
         {
-            TestSort(new QuickSort<int>());
+            InPlaceTestSort(new QuickSort<int>());
         }
 
         [TestMethod]
         public void BubbleSortTest()
         {
-            TestSort(new BubbleSort<int>());
+            InPlaceTestSort(new BubbleSort<int>());
         }
 
         [TestMethod]
         public void HeapSortTest()
         {
-            TestSort(new HeapSort<int>());
+            InPlaceTestSort(new HeapSort<int>());
         }
 
         [TestMethod]
         public void OddEvenSortTest()
         {
-            TestSort(new OddEvenSort<int>());
+            InPlaceTestSort(new OddEvenSort<int>());
         }
 
         [TestMethod]
         public void CombSortTest()
         {
-            TestSort(new CombSort<int>());
+            InPlaceTestSort(new CombSort<int>());
         }
 
         [TestMethod]
         public void ShellSortTest()
         {
-            TestSort(new ShellSort<int>());
+            InPlaceTestSort(new ShellSort<int>());
         }
 
         [TestMethod]
         public void InsertionSortTest()
         {
-            TestSort(new InsertionSort<int>());
+            InPlaceTestSort(new InsertionSort<int>());
+        }
+
+        [TestMethod]
+        public void SelectionSortTest()
+        {
+            InPlaceTestSort(new SelectionSort<int>());
+        }
+
+        [TestMethod]
+        public void MergeSortTest()
+        {
+            OutOfPlaceTestSort(new MergeSort<int>());
         }
 
         [TestMethod]
         public void BitonicMergeSortTest()
         {
-            TestSort(new BitonicMergeSort<int>(), unsorted2);
+            InPlaceTestSort(new BitonicMergeSort<int>(), unsorted2);
         }
 
         [TestMethod]
         public void BitonicMergeSortInvalidCountTest()
         {
-            Assert.ThrowsException<ArgumentException>(() => TestSort(new BitonicMergeSort<int>()));
+            Assert.ThrowsException<ArgumentException>(() => InPlaceTestSort(new BitonicMergeSort<int>()));
         }
 
-        private void TestSort(IInPlaceSort<int> sorter, int[] arrayToSort)
+        private void InPlaceTestSort(IInPlaceSort<int> sorter, int[] arrayToSort)
         {
             sorter.Sort(arrayToSort);
             VerifySorted(arrayToSort);
         }
 
-        private void TestSort(IInPlaceSort<int> sorter)
+        private void InPlaceTestSort(IInPlaceSort<int> sorter)
         {
-            TestSort(sorter, unsorted);
+            InPlaceTestSort(sorter, unsorted);
         }
 
-        private void VerifySorted(int[] array)
+        private void OutOfPlaceTestSort(IOutOfPlaceSort<int> sorter)
+        {
+            int[] original = (int[])unsorted.Clone();
+
+            var sorted = sorter.Sort(unsorted);
+            VerifySorted(sorted);
+
+            // Verify that the original array wasn't modified
+            CollectionAssert.AreEqual(original, unsorted);
+        }
+
+        private void VerifySorted(IList<int> array)
         {
             int previous = 0;
             foreach (int current in array)
