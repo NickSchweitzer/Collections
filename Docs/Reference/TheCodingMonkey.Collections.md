@@ -24,7 +24,6 @@
 | class [PreOrderFlatEnumerator&lt;TKey,TValue&gt;](TheCodingMonkey.Collections.BST/PreOrderFlatEnumerator-2.md) | Pre Order Traversal Enumerator. The BinarySearchTree is enumerated in the order of Current Value, Left Node, Right Node. |
 | class [RedBlackNode&lt;TKey,TValue&gt;](TheCodingMonkey.Collections.BST/RedBlackNode-2.md) | Red-Black Binary Search Tree Node. |
 | class [RedBlackTree&lt;TKey,TValue&gt;](TheCodingMonkey.Collections.BST/RedBlackTree-2.md) | Implementation of a Balanced Red-Black Binary Search Tree. |
-| abstract class [TraversalEnumerator&lt;TKey,TValue&gt;](TheCodingMonkey.Collections.BST/TraversalEnumerator-2.md) |  |
 
 ## TheCodingMonkey.Collections.Lists namespace
 

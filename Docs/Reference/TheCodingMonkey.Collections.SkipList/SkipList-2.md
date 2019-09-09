@@ -19,17 +19,17 @@ public class SkipList<TKey, TValue> : ICloneable, IDictionary<TKey, TValue>
 | [Item](SkipList-2/Item.md) { get; set; } | Indexer for the Skip List. |
 | [Keys](SkipList-2/Keys.md) { get; } | Gets an ICollection containing the keys of the Skip List. |
 | [Values](SkipList-2/Values.md) { get; } | Gets an ICollection containing the values of the Skip List. |
-| [Add](SkipList-2/Add.md)(…) |  |
+| [Add](SkipList-2/Add.md)(…) | Adds an item to the List. |
 | virtual [Add](SkipList-2/Add.md)(…) | Adds an item to the List |
 | [Clear](SkipList-2/Clear.md)() | Removes all items from the list. |
 | [Clone](SkipList-2/Clone.md)() | Makes a deep copy of this SkipList. |
-| [Contains](SkipList-2/Contains.md)(…) |  |
+| [Contains](SkipList-2/Contains.md)(…) | Determines if the value is contained somewhere in the list. |
 | virtual [ContainsKey](SkipList-2/ContainsKey.md)(…) | Determines whether the list contains the specified key. |
 | [CopyTo](SkipList-2/CopyTo.md)(…) | Copies the Skip List elements to a one-dimensional Array instance at the specified index. |
 | [GetEnumerator](SkipList-2/GetEnumerator.md)() | Creates a Enumerator object which can be used to iterate through the SkipList. |
-| [Remove](SkipList-2/Remove.md)(…) |  |
+| [Remove](SkipList-2/Remove.md)(…) | Removes the node containing this data from the list. |
 | virtual [Remove](SkipList-2/Remove.md)(…) | Removes an value from the List. |
-| [TryGetValue](SkipList-2/TryGetValue.md)(…) |  |
+| [TryGetValue](SkipList-2/TryGetValue.md)(…) | Attempts to retrieve the value for the given key. |
 
 ## Remarks
 

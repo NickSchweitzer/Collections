@@ -1,8 +1,25 @@
 # SkipList&lt;TKey,TValue&gt;.Contains method
 
+Determines if the value is contained somewhere in the list.
+
 ```csharp
 public bool Contains(KeyValuePair<TKey, TValue> pair)
 ```
+
+| parameter | description |
+| --- | --- |
+| pair | KeyValuePair to find. Only the Key property is used in the search. |
+
+## Return Value
+
+True if exists in the list, false otherwise.
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentNullException | Thrown if key is null. |
+| InvalidCastException | Thrown if key is not of type IComparable. |
 
 ## See Also
 

@@ -1,8 +1,29 @@
 # SkipList&lt;TKey,TValue&gt;.Remove method (1 of 2)
 
+Removes the node containing this data from the list.
+
 ```csharp
 public bool Remove(KeyValuePair<TKey, TValue> pair)
 ```
+
+| parameter | description |
+| --- | --- |
+| pair | KeyValuePair to remove from the list. |
+
+## Return Value
+
+True if an item is removed from the tree. False if the item is not found.
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| ArgumentNullException | Thrown if key is null. |
+| InvalidCastException | Thrown if key is not of type IComparable. |
+
+## Remarks
+
+If data does not exist in the list, then the list remains unchanged. No exception is thrown.
 
 ## See Also
 
@@ -22,6 +43,10 @@ public virtual bool Remove(TKey key)
 | parameter | description |
 | --- | --- |
 | key | Key to remove. |
+
+## Return Value
+
+True if an item is removed from the tree. False if the item is not found.
 
 ## Exceptions
 

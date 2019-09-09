@@ -10,6 +10,10 @@ public bool Remove(KeyValuePair<TKey, TValue> pair)
 | --- | --- |
 | pair | KeyValuePair to remove from the tree. |
 
+## Return Value
+
+True if an item is removed from the tree. False if the item is not found.
+
 ## Exceptions
 
 | exception | condition |
@@ -39,6 +43,10 @@ public virtual bool Remove(TKey key)
 | parameter | description |
 | --- | --- |
 | key | Value to remove from the tree. |
+
+## Return Value
+
+True if an item is removed from the tree. False if the item is not found.
 
 ## Exceptions
 

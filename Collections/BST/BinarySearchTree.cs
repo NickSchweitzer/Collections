@@ -260,7 +260,8 @@ namespace TheCodingMonkey.Collections.BST
         /// <param name="pair">KeyValuePair to remove from the tree.</param>
         /// <exception cref="ArgumentNullException">Thrown if key is null.</exception>
         /// <exception cref="InvalidCastException">Thrown if key is not of type IComparable.</exception>
-        /// <remarks>If data does not exist in the tree, then the tree remains unchanged.  No exception is thrown.</remarks>
+        /// <returns>True if an item is removed from the tree. False if the item is not found.</returns>
+        /// <remarks>If data does not exist in the tree, then the tree remains unchanged. No exception is thrown.</remarks>
         public bool Remove( KeyValuePair<TKey, TValue> pair )
         {
             return Remove( pair.Key );
@@ -270,6 +271,7 @@ namespace TheCodingMonkey.Collections.BST
         /// <param name="key">Value to remove from the tree.</param>
         /// <exception cref="ArgumentNullException">Thrown if key is null.</exception>
         /// <exception cref="InvalidCastException">Thrown if key is not of type IComparable.</exception>
+        /// <returns>True if an item is removed from the tree. False if the item is not found.</returns>
         /// <remarks>If data does not exist in the tree, then the tree remains unchanged.  No exception is thrown.</remarks>
         public virtual bool Remove( TKey key )
         {

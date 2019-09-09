@@ -129,6 +129,10 @@ namespace TheCodingMonkey.Collections.SkipList
             }
         }
 
+        /// <summary>Attempts to retrieve the value for the given key.</summary>
+        /// <param name="key">Key to search for in the list.</param>
+        /// <param name="value">Value that is present for the given key, ir present. Otherwise the default value for the object is returned.</param>
+        /// <returns>True if the key is present in the list, false otherwise.</returns>
         public bool TryGetValue( TKey key, out TValue value )
         {
             value = default( TValue );
@@ -175,6 +179,11 @@ namespace TheCodingMonkey.Collections.SkipList
             Count   = 0;
         }
 
+        /// <summary>Determines if the value is contained somewhere in the list.</summary>
+        /// <param name="pair">KeyValuePair to find. Only the Key property is used in the search.</param>
+        /// <returns>True if exists in the list, false otherwise.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if key is null.</exception>
+        /// <exception cref="InvalidCastException">Thrown if key is not of type IComparable.</exception>
         public bool Contains( KeyValuePair<TKey, TValue> pair )
         {
             return ContainsKey( pair.Key );
@@ -192,6 +201,12 @@ namespace TheCodingMonkey.Collections.SkipList
 
             return ( Search( key ) != null );
         }
+
+        /// <summary>Adds an item to the List.</summary>
+        /// <param name="pair">KeyValuePair containing both the Key and Value to add together.</param>
+        /// <exception cref="ArgumentNullException">Thrown if key is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if key already exists in the tree.</exception>
+        /// <exception cref="InvalidCastException">Thrown if key is not of type IComparable.</exception>
 
         public void Add( KeyValuePair<TKey, TValue> pair )
         {
@@ -248,6 +263,12 @@ namespace TheCodingMonkey.Collections.SkipList
             }
         }
 
+        /// <summary>Removes the node containing this data from the list.</summary>
+        /// <param name="pair">KeyValuePair to remove from the list.</param>
+        /// <exception cref="ArgumentNullException">Thrown if key is null.</exception>
+        /// <exception cref="InvalidCastException">Thrown if key is not of type IComparable.</exception>
+        /// <returns>True if an item is removed from the tree. False if the item is not found.</returns>
+        /// <remarks>If data does not exist in the list, then the list remains unchanged. No exception is thrown.</remarks>
         public bool Remove( KeyValuePair<TKey, TValue> pair )
         {
             return Remove( pair.Key );
@@ -257,6 +278,7 @@ namespace TheCodingMonkey.Collections.SkipList
         /// <param name="key">Key to remove.</param>
         /// <exception cref="ArgumentNullException">Thrown if key is null.</exception>
         /// <exception cref="InvalidCastException">Thrown if key is not of type IComparable.</exception>
+        /// <returns>True if an item is removed from the tree. False if the item is not found.</returns>
         /// <remarks>If key does not exist in the list, then the list remains unchanged.  No exception is thrown.</remarks>
         public virtual bool Remove( TKey key )
         {
