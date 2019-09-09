@@ -1,7 +1,7 @@
 ﻿using System;
-using TheCodingMonkey.Collections.Sort;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TheCodingMonkey.Collections.Sort;
 
 namespace TheCodingMonkey.Collections.Tests
 {
@@ -83,6 +83,7 @@ namespace TheCodingMonkey.Collections.Tests
         [TestMethod]
         public void BitonicMergeSortInvalidCountTest()
         {
+            // Verifies that the sort throws an exception is passed a collection with a size that is not a power of 2
             Assert.ThrowsException<ArgumentException>(() => InPlaceTestSort(new BitonicMergeSort<int>()));
         }
 

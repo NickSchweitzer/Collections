@@ -17,4 +17,15 @@ This library contains implementations of the following collections:
 * LinkedList
 * Command Line Arguments Collection
 
+This library also contains implementations for the following sorting algorithms:
+* Quick Sort
+* Bubble Sort
+* Heap Sort
+* Odd Even Sort
+* Comb Sort
+* Shell Sort
+* Bitonic Merge Sort
+* Insertion Sort
+* Selection Sort
+
 More documentation on the classes, including sample code can be found on [ReadTheDocs](https://thecodingmonkeycollections.readthedocs.io/en/latest/).

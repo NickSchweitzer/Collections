@@ -29,8 +29,7 @@ namespace TheCodingMonkey.Collections.Sort
 
             for (int i = median; i < unsorted.Count; i++)
                 right.Add(unsorted[i]);
-
-
+            
             left = Sort(left);
             right = Sort(right);
             return Merge(left, right);

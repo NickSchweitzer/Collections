@@ -88,8 +88,6 @@ These algorithms create a new list sorted list from the unsorted list passed int
 
 * [Merge Sort](./Reference/TheCodingMonkey.Collections.Sort/MergeSort-1.md)
 
-# Iterators
-
 # Library References
 
 [Full reference documentation](./Reference/TheCodingMonkey.Collections.md) of the class library is available as well.

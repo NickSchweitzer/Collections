@@ -15,7 +15,7 @@ public abstract class FlatEnumerator<TKey, TValue> : IEnumerator<KeyValuePair<TK
 | [Current](FlatEnumerator-2/Current.md) { get; } | Gets the current element in the collection. |
 | [Key](FlatEnumerator-2/Key.md) { get; } | Gets the key of the current dictionary entry. |
 | [Value](FlatEnumerator-2/Value.md) { get; } | Gets the value of the current dictionary entry. |
-| [Dispose](FlatEnumerator-2/Dispose.md)() |  |
+| [Dispose](FlatEnumerator-2/Dispose.md)() | Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. |
 | [MoveNext](FlatEnumerator-2/MoveNext.md)() | Advances the enumerator to the next element of the collection. |
 | [Reset](FlatEnumerator-2/Reset.md)() | Sets the enumerator to its initial position, which is before the first element in the collection. |
 

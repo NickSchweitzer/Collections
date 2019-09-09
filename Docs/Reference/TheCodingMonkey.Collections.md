@@ -26,19 +26,6 @@
 | class [RedBlackTree&lt;TKey,TValue&gt;](TheCodingMonkey.Collections.BST/RedBlackTree-2.md) | Implementation of a Balanced Red-Black Binary Search Tree. |
 | abstract class [TraversalEnumerator&lt;TKey,TValue&gt;](TheCodingMonkey.Collections.BST/TraversalEnumerator-2.md) |  |
 
-## TheCodingMonkey.Collections.Iterators namespace
-
-| public type | description |
-| --- | --- |
-| class [IterIsolate](TheCodingMonkey.Collections.Iterators/IterIsolate.md) | Isolate this the iteration from the collection. Allows you to modify the underlying collection while in the middle of a foreach loop. |
-| class [IterReverse](TheCodingMonkey.Collections.Iterators/IterReverse.md) | Iterate a collection in the reverse order |
-| class [IterSelect](TheCodingMonkey.Collections.Iterators/IterSelect.md) | Iterate a collection in the Select order. |
-| delegate [IterSelectDelegate](TheCodingMonkey.Collections.Iterators/IterSelectDelegate.md) | Predicate to select iterated elements. |
-| class [IterSort](TheCodingMonkey.Collections.Iterators/IterSort.md) | Iterate a collection in sorted order, either using the built-in ordering for the object or using a class implementing IComparer. |
-| class [IterSortHashValue](TheCodingMonkey.Collections.Iterators/IterSortHashValue.md) | Iterate the keys in a hashtable, ordering them by the values corresponding to those keys. Either uses the defined ordering on the values or a passed-in IComparer implementation. |
-| class [IterSubList](TheCodingMonkey.Collections.Iterators/IterSubList.md) | Enumerate a collection, skipping some items at the beginning or end while enumerating |
-| class [IterType](TheCodingMonkey.Collections.Iterators/IterType.md) | Iterate a collection in the Type order |
-
 ## TheCodingMonkey.Collections.Lists namespace
 
 | public type | description |

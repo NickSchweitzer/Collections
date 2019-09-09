@@ -57,6 +57,7 @@ namespace TheCodingMonkey.Collections.BST
             return (++m_nIndex < m_lstIterator.Count );
         }
 
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public void Dispose()
         { }
 
