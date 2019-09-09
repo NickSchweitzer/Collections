@@ -7,7 +7,7 @@ namespace TheCodingMonkey.Collections.Sort
     /// <remarks>More information about Insertion sort can be found at <a href="https://en.wikipedia.org/wiki/Insertion_sort">Wikipedia</a> or 
     /// <a href="https://exceptionnotfound.net/insertion-sort-csharp-the-sorting-algorithm-family-reunion/">this blog post</a>.</remarks>
     /// <typeparam name="T">T must implement IComparable</typeparam>
-    public class InsertionSort<T> : ISort<T>
+    public class InsertionSort<T> : IInPlaceSort<T>
         where T : IComparable
     {
         /// <summary>Performs an in-place sort of the collection.</summary>

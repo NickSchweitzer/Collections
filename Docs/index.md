@@ -66,7 +66,11 @@ Examples: `-param1 value1 --param2 /param3:"Test-:-work" /param4=happy -param5 '
 # Sorting Algorithms
 
 Implemented several popular sorting algorithms that all operate generically on any collection wich implements [`IList<T>`](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1) where `T` 
-implements [`IComparable`](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable).
+implements [`IComparable`](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable). [A summary of the different performance characteristics](./SortingPerformance.md) of these algorithms is also available.
+
+## In Place Sorting Algorithms
+
+These algorithms modify the list which is passed into the sorting function. They all derive from [`IInPlaceSort<T>`](./Reference/TheCodingMonkey.Collections.Sort/IInPlaceSort-1.md)
 
 * [Quick Sort](./Reference/TheCodingMonkey.Collections.Sort/QuickSort-1.md)
 * [Bubble Sort](./Reference/TheCodingMonkey.Collections.Sort/BubbleSort-1.md)
@@ -76,6 +80,13 @@ implements [`IComparable`](https://docs.microsoft.com/en-us/dotnet/api/system.ic
 * [Shell Sort](./Reference/TheCodingMonkey.Collections.Sort/ShellSort-1.md)
 * [Bitonic Merge Sort](./Reference/TheCodingMonkey.Collections.Sort/BitonicMergeSort-1.md)
 * [Insertion Sort](./Reference/TheCodingMonkey.Collections.Sort/InsertionSort-1.md)
+* [Selection Sort](./Reference/TheCodingMonkey.Collections.Sort/SelectionSort-1.md)
+
+## Out of Place Sorting Algorithms
+
+These algorithms create a new list sorted list from the unsorted list passed into the sorting function. They all derive from [`IOutOfPlaceSort<T>`](./Reference/TheCodingMonkey.Collections.Sort/IOutOfPlaceSort-1.md)
+
+* [Merge Sort](./Reference/TheCodingMonkey.Collections.Sort/MergeSort-1.md)
 
 # Iterators
 

@@ -73,13 +73,13 @@ namespace TheCodingMonkey.Collections.Tests
             Assert.ThrowsException<ArgumentException>(() => TestSort(new BitonicMergeSort<int>()));
         }
 
-        private void TestSort(ISort<int> sorter, int[] arrayToSort)
+        private void TestSort(IInPlaceSort<int> sorter, int[] arrayToSort)
         {
             sorter.Sort(arrayToSort);
             VerifySorted(arrayToSort);
         }
 
-        private void TestSort(ISort<int> sorter)
+        private void TestSort(IInPlaceSort<int> sorter)
         {
             TestSort(sorter, unsorted);
         }

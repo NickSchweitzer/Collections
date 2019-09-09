@@ -1,9 +1,9 @@
-# ISort&lt;T&gt; interface
+# IOutOfPlaceSort&lt;T&gt; interface
 
-Generic interface for all algorithms in this collection that perform an in-place sort of an IList
+Generic interface for all algorithms in this collection that perform an out of place sort of an IList
 
 ```csharp
-public interface ISort<T>
+public interface IOutOfPlaceSort<T>
     where T : IComparable
 ```
 
@@ -15,7 +15,11 @@ public interface ISort<T>
 
 | name | description |
 | --- | --- |
-| [Sort](ISort-1/Sort.md)(…) | Performs an in-place sort of the collection. |
+| [Sort](IOutOfPlaceSort-1/Sort.md)(…) | Performs an in-place sort of the collection. |
+
+## Remarks
+
+The passed in Collection is unmodified by the sorting algorithm.
 
 ## See Also
 

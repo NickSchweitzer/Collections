@@ -8,7 +8,7 @@ namespace TheCodingMonkey.Collections.Sort
     /// at <a href="https://en.wikipedia.org/wiki/Bitonic_sorter">Wikipedia</a> or 
     /// <a href="https://exceptionnotfound.net/bitonic-merge-sort-csharp-the-sorting-algorithm-family-reunion/">this blog post</a>.</remarks>
     /// <typeparam name="T">T must implement IComparable</typeparam>
-    public class BitonicMergeSort<T> : ISort<T>
+    public class BitonicMergeSort<T> : IInPlaceSort<T>
         where T : IComparable
     {
         /// <summary>Performs an in-place sort of the collection.</summary>

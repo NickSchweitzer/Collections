@@ -7,7 +7,7 @@ namespace TheCodingMonkey.Collections.Sort
     /// <remarks>More information about QuickSort can be found at <a href="https://en.wikipedia.org/wiki/Heapsort">Wikipedia</a> or 
     /// <a href="https://exceptionnotfound.net/heap-sort-csharp-the-sorting-algorithm-family-reunion/">this blog post</a>.</remarks>
     /// <typeparam name="T">T must implement IComparable</typeparam>
-    public class HeapSort<T> : ISort<T>
+    public class HeapSort<T> : IInPlaceSort<T>
         where T : IComparable
     {
         /// <summary>Performs an in-place sort of the collection.</summary>
@@ -27,7 +27,7 @@ namespace TheCodingMonkey.Collections.Sort
             }
         }
 
-        //Rebuilds the heap
+        /// <summary>Rebuilds the Heap</summary>
         static void Heapify(IList<T> collection, int length, int i)
         {
             int largest = i;

@@ -8,7 +8,7 @@ namespace TheCodingMonkey.Collections.Sort
     /// <a href="https://exceptionnotfound.net/shell-sort-csharp-the-sorting-algorithm-family-reunion/">this blog post</a>.</remarks>
     /// <typeparam name="T">T must implement IComparable</typeparam>
 
-    public class ShellSort<T> : ISort<T>
+    public class ShellSort<T> : IInPlaceSort<T>
         where T : IComparable
     {
         /// <summary>Performs an in-place sort of the collection.</summary>

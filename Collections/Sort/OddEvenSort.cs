@@ -7,7 +7,7 @@ namespace TheCodingMonkey.Collections.Sort
     /// <remarks>More information about Odd Even Sort can be found at <a href="https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort">Wikipedia</a> or 
     /// <a href="https://exceptionnotfound.net/odd-even-sort-csharp-the-sorting-algorithm-family-reunion/">this blog post</a>.</remarks>
     /// <typeparam name="T">T must implement IComparable</typeparam>
-    public class OddEvenSort<T> : ISort<T>
+    public class OddEvenSort<T> : IInPlaceSort<T>
         where T : IComparable
     {
         /// <summary>Performs an in-place sort of the collection.</summary>

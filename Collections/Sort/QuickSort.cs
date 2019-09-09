@@ -7,7 +7,7 @@ namespace TheCodingMonkey.Collections.Sort
     /// <remarks>More information about QuickSort can be found at <a href="https://en.wikipedia.org/wiki/Quicksort">Wikipedia</a> or 
     /// <a href="https://exceptionnotfound.net/quick-sort-csharp-the-sorting-algorithm-family-reunion/">this blog post</a>.</remarks>
     /// <typeparam name="T">T must implement IComparable</typeparam>
-    public class QuickSort<T> : ISort<T>
+    public class QuickSort<T> : IInPlaceSort<T>
         where T : IComparable
     {
         /// <summary>Performs an in-place sort of the collection.</summary>
