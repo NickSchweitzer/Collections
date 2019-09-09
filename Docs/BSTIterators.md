@@ -2,6 +2,13 @@
 
 All of the Iterators implemented in this library "flatten" the binary search tree at the time of construction of the enuermator class. That means there is a shallow copy made of all the nodes in the order in which they will be traversed to a seperate collection.
 
+There are several iterators available that traverse the tree using different methods:
+
+* [In Order](.\Reference\TheCodingMonkey.Collections.BST\InOrderFlatEnumerator-2.md) - Default Enumerator - Traverses the tree in sorted order according to the Key Value.
+* [Pre-Order](.\Reference\TheCodingMonkey.Collections.BST\PreOrderFlatEnumerator-2.md) - Traverses the tree in the node order according to Left, Root, Right.
+* [Post-Order](.\Reference\TheCodingMonkey.Collections.BST\PostOrderFlatEnumerator-2.md) - Traverses the tree in the node order according to Root, Left, Right.
+* [Level Order](.\Reference\TheCodingMonkey.Collections.BST\LevelOrderFlatEnumerator-2.md) - Traverses the tree breadth first
+
 ![Binary Search Tree Sample](./Images/sample_bst.png)
 
 For a Binary Search Tree with the nodes as defined above, the different iterators will traverse in the following orders:
