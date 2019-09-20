@@ -5,9 +5,6 @@ namespace TheCodingMonkey.Collections
     /// <summary>Trivial cloneable object used for testing a Binary Search Tree.</summary>
     public class CloneableInt : ICloneable, IComparable<CloneableInt>, IComparable
     {
-        public CloneableInt()
-        : this( 0 ) {}
-
         public CloneableInt( int n )
         { Value = n; }
 
@@ -28,24 +25,12 @@ namespace TheCodingMonkey.Collections
                 throw new ArgumentNullException( "obj", "obj cannot be null" );
 
             CloneableInt c = obj as CloneableInt;
-            if (c != null)
-                return CompareTo(c);
-            else
-            {
-                int i = (int)c;
-                return CompareTo(new CloneableInt(i));
-            }
+            return CompareTo(c);
         }
 
         public override int GetHashCode()
         { return Value.GetHashCode(); }
 
         public int Value { get; set; }
-
-        public static implicit operator int( CloneableInt n ) 
-        { return n.Value; }
-
-        public static implicit operator CloneableInt( int n )
-        { return new CloneableInt( n ); }
     }
 }

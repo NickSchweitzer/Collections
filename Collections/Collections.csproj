@@ -39,7 +39,7 @@
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Projects\Collections\Collections\bin\Debug\TheCodingMonkey.Collections.xml</DocumentationFile>
+    <DocumentationFile>C:\Projects\Collections\Collections\bin\Debug\netstandard2.0\TheCodingMonkey.Collections.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
