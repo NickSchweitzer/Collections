@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace TheCodingMonkey.Collections.Sort
 {
     /// <summary>Implementation of a Bubble sort (sinking sort) for IList</summary>
-    /// <remarks>More information about QuickSort can be found at <a href="https://en.wikipedia.org/wiki/Bubble_sort">Wikipedia</a> or 
+    /// <remarks>More information about BubbleSort can be found at <a href="https://en.wikipedia.org/wiki/Bubble_sort">Wikipedia</a> or 
     /// <a href="https://exceptionnotfound.net/bubble-sort-csharp-the-sorting-algorithm-family-reunion/">this blog post</a>.</remarks>
     /// <typeparam name="T">T must implement IComparable</typeparam>
     public class BubbleSort<T> : IInPlaceSort<T>
